@@ -34,8 +34,8 @@ const outlets = [
   { name: "Portal Da Mídia", logo: logoPortalDaMidia },
   { name: "GZH", logo: null },
   { name: "TNH1", logo: null },
-  { name: "A Cidade ON", logo: null },
-  { name: "Portaledicase", logo: null },
+  { name: "A Cidade ON", logo: logoACidadeOn },
+  { name: "Portaledicase", logo: logoEdicase },
 ];
 
 const Press = () => {
