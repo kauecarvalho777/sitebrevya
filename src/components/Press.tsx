@@ -1,7 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
-import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 
 import logoJovemPan from "@/assets/press/jovem-pan.png";
 import logoSegs from "@/assets/press/segs.png";
@@ -40,27 +39,6 @@ const outlets = [
 ];
 
 const Press = () => {
-  const pressItems = outlets.map((outlet) => ({
-    key: outlet.name,
-    content: (
-      <a
-        href={outlet.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center h-24 px-8 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(56_18%_51%/0.1)]"
-      >
-        {outlet.logo ? (
-          <img
-            src={outlet.logo}
-            alt={outlet.name}
-            className="max-h-10 w-auto object-contain brightness-0 dark:invert opacity-70 hover:opacity-100 transition-opacity"
-          />
-        ) : (
-          <span className="text-lg font-bold text-foreground/70 whitespace-nowrap">{outlet.name}</span>
-        )}
-      </a>
-    ),
-  }));
   return (
     <section id="imprensa" className="py-24 lg:py-32 bg-surface overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
@@ -80,21 +58,38 @@ const Press = () => {
             espaço em veículos nacionais e portais de mercado.
           </p>
         </FadeIn>
-      </div>
 
-      {/* Infinite scrolling logos */}
-      <FadeIn delay={0.15}>
-        <div className="mt-12">
-          <InfiniteMovingCards
-            items={pressItems}
-            direction="left"
-            speed="slow"
-            pauseOnHover
-          />
-        </div>
-      </FadeIn>
+        <FadeIn delay={0.15}>
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {outlets.map((outlet, i) => (
+              <motion.a
+                key={outlet.name}
+                href={outlet.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center justify-center h-20 px-4 rounded-xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_hsl(56_18%_51%/0.12)] group"
+              >
+                {outlet.logo ? (
+                  <img
+                    src={outlet.logo}
+                    alt={outlet.name}
+                    className="max-h-8 w-auto object-contain brightness-0 dark:invert opacity-60 group-hover:opacity-100 transition-opacity"
+                  />
+                ) : (
+                  <span className="text-sm font-bold text-foreground/60 group-hover:text-foreground/100 whitespace-nowrap transition-colors">
+                    {outlet.name}
+                  </span>
+                )}
+              </motion.a>
+            ))}
+          </div>
+        </FadeIn>
 
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
         <FadeIn delay={0.2}>
           <div className="mt-12">
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
