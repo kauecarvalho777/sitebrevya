@@ -227,7 +227,7 @@ const CaseStudy = () => {
                     ? "border-primary/50 shadow-[0_0_30px_hsl(56_18%_51%/0.15)]"
                     : "border-border opacity-60 hover:opacity-80"
                 }`}
-                style={{ width: "min(80vw, 700px)" }}
+                style={{ width: "min(80vw, 700px)", height: "400px" }}
                 onClick={() => { goTo(i); resetAutoplay(); }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -235,7 +235,7 @@ const CaseStudy = () => {
                 <img
                   src={shot.src}
                   alt={shot.alt}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover object-top"
                   loading="lazy"
                 />
               </motion.div>
