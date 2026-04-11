@@ -3,6 +3,12 @@ import { useRef } from "react";
 import { ExternalLink } from "lucide-react";
 import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 
+import logoJovemPan from "@/assets/press/jovem-pan.png";
+import logoSegs from "@/assets/press/segs.png";
+import logoOGlobo from "@/assets/press/o-globo.png";
+import logoPortalDaMidia from "@/assets/press/portal-da-midia.png";
+import logoTerra from "@/assets/press/terra.png";
+
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -19,22 +25,31 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 };
 
 const outlets = [
-  "O Globo",
-  "Terra",
-  "Jovem Pan",
-  "GZH",
-  "TNH1",
-  "A Cidade ON",
-  "SEGS",
-  "Portaledicase",
+  { name: "O Globo", logo: logoOGlobo },
+  { name: "Terra", logo: logoTerra },
+  { name: "Jovem Pan", logo: logoJovemPan },
+  { name: "SEGS", logo: logoSegs },
+  { name: "Portal Da Mídia", logo: logoPortalDaMidia },
+  { name: "GZH", logo: null },
+  { name: "TNH1", logo: null },
+  { name: "A Cidade ON", logo: null },
+  { name: "Portaledicase", logo: null },
 ];
 
 const Press = () => {
-  const pressItems = outlets.map((name) => ({
-    key: name,
+  const pressItems = outlets.map((outlet) => ({
+    key: outlet.name,
     content: (
-      <div className="flex items-center justify-center h-20 px-8 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(56_18%_51%/0.1)]">
-        <span className="text-lg font-bold text-foreground/70 whitespace-nowrap">{name}</span>
+      <div className="flex items-center justify-center h-24 px-8 rounded-xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_20px_hsl(56_18%_51%/0.1)]">
+        {outlet.logo ? (
+          <img
+            src={outlet.logo}
+            alt={outlet.name}
+            className="max-h-10 w-auto object-contain brightness-0 dark:invert opacity-70 hover:opacity-100 transition-opacity"
+          />
+        ) : (
+          <span className="text-lg font-bold text-foreground/70 whitespace-nowrap">{outlet.name}</span>
+        )}
       </div>
     ),
   }));
