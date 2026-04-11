@@ -10,6 +10,8 @@ import {
   FileText,
   Headphones,
 } from "lucide-react";
+import { CardSpotlight } from "@/components/ui/aceternity/card-spotlight";
+import { TracingBeam } from "@/components/ui/aceternity/tracing-beam";
 import flowDemo from "@/assets/whatsapp-flow-demo.gif";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
@@ -53,9 +55,12 @@ const FlowCommerce = () => {
     <section id="flow-commerce" className="py-24 lg:py-32 bg-surface">
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
         <FadeIn>
-          <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-4">
-            Flow Commerce
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px flex-1 max-w-[60px] bg-primary" />
+            <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+              Flow Commerce
+            </span>
+          </div>
           <h2 className="text-2xl md:text-4xl font-bold leading-tight max-w-3xl">
             Não é apenas um e-commerce dentro do WhatsApp.{" "}
             <span className="text-gradient-gold">
@@ -70,8 +75,8 @@ const FlowCommerce = () => {
 
         {/* Origin story */}
         <FadeIn delay={0.15}>
-          <div className="mt-16 bg-surface-elevated rounded-xl p-6 md:p-10 border border-border">
-            <h3 className="font-bold text-lg md:text-xl mb-4">
+          <CardSpotlight className="mt-16">
+            <h3 className="font-bold text-lg md:text-xl mb-4 text-foreground">
               Tudo começou com uma necessidade real.
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
@@ -83,21 +88,25 @@ const FlowCommerce = () => {
               "Se a venda já acontece no WhatsApp, por que a compra ainda precisa sair dali?"
             </blockquote>
             <p className="mt-4 text-primary font-medium text-sm">A resposta virou produto.</p>
-          </div>
+          </CardSpotlight>
         </FadeIn>
 
         {/* Demo + Features */}
         <div className="mt-16 grid lg:grid-cols-2 gap-12 items-center">
           <FadeIn delay={0.1}>
             <div className="relative">
-              <div className="relative mx-auto w-fit">
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl blur-2xl" />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative"
+              >
                 <img
                   src={flowDemo}
                   alt="A jornada completa de compra acontecendo dentro do WhatsApp."
-                  className="relative rounded-2xl shadow-2xl max-h-[500px] w-auto"
+                  className="relative rounded-2xl shadow-2xl max-h-[500px] w-auto mx-auto border border-border"
                 />
-              </div>
+              </motion.div>
               <p className="mt-4 text-xs text-muted-foreground text-center italic">
                 A jornada completa de compra acontecendo dentro do WhatsApp.
               </p>
@@ -105,31 +114,40 @@ const FlowCommerce = () => {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <div>
-              <h3 className="font-bold text-lg md:text-xl mb-2">
-                Uma nova lógica de e-commerce construída dentro do WhatsApp.
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Sem redirecionamento. Sem atrito. Sem quebra de jornada.
-              </p>
-              <ul className="space-y-3">
-                {clientFeatures.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
-                    <span className="w-6 h-6 rounded-full bg-primary/15 text-primary text-xs font-bold flex items-center justify-center">
-                      {i + 1}
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <TracingBeam>
+              <div className="pl-8">
+                <h3 className="font-bold text-lg md:text-xl mb-2 text-foreground">
+                  Uma nova lógica de e-commerce construída dentro do WhatsApp.
+                </h3>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Sem redirecionamento. Sem atrito. Sem quebra de jornada.
+                </p>
+                <ul className="space-y-4">
+                  {clientFeatures.map((f, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-3 text-sm text-foreground/90"
+                    >
+                      <span className="w-7 h-7 rounded-full bg-primary/15 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0">
+                        {i + 1}
+                      </span>
+                      {f}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </TracingBeam>
           </FadeIn>
         </div>
 
         {/* Backoffice */}
         <FadeIn delay={0.1}>
           <div className="mt-20">
-            <h3 className="font-bold text-lg md:text-xl mb-2">
+            <h3 className="font-bold text-lg md:text-xl mb-2 text-foreground">
               Por trás da conversa, existe uma plataforma completa de gestão.
             </h3>
             <p className="text-sm text-muted-foreground mb-8 max-w-2xl">
@@ -137,14 +155,19 @@ const FlowCommerce = () => {
               controle, inteligência e escalabilidade.
             </p>
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {backofficeFeatures.map((f) => (
-                <div
+              {backofficeFeatures.map((f, i) => (
+                <motion.div
                   key={f.label}
-                  className="bg-background rounded-lg p-4 border border-border hover:border-primary/30 transition-colors text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="bg-background rounded-lg p-4 border border-border hover:border-primary/30 transition-colors text-center group cursor-default"
                 >
-                  <f.icon className="mx-auto mb-2 text-primary" size={22} />
+                  <f.icon className="mx-auto mb-2 text-muted-foreground group-hover:text-primary transition-colors" size={22} />
                   <p className="text-xs font-medium text-foreground/90">{f.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -153,7 +176,7 @@ const FlowCommerce = () => {
         {/* Differentiator */}
         <FadeIn delay={0.1}>
           <div className="mt-16 text-center">
-            <h3 className="font-bold text-lg md:text-xl mb-3">
+            <h3 className="font-bold text-lg md:text-xl mb-3 text-foreground">
               Enquanto muitos enxergam recurso, a Brevya enxerga{" "}
               <span className="text-gradient-gold">aplicação.</span>
             </h3>
@@ -162,7 +185,7 @@ const FlowCommerce = () => {
             </p>
             <a
               href="#contato"
-              className="inline-flex items-center justify-center mt-8 px-8 py-3.5 rounded-md bg-primary text-primary-foreground font-semibold text-sm hover:bg-gold-light transition-colors"
+              className="inline-flex items-center justify-center mt-8 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:bg-gold-light transition-all duration-300 hover:shadow-[0_0_30px_hsl(56_18%_51%/0.4)]"
             >
               Quero entender como essa estrutura funciona
             </a>
