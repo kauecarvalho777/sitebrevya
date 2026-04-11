@@ -23,7 +23,7 @@ const Pablo = () => {
     <section id="pablo" className="relative py-24 lg:py-32 overflow-hidden">
       <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="hsl(56 18% 51%)" />
 
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <FadeIn>
             <div className="relative group">
