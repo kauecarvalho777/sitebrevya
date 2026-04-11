@@ -10,6 +10,12 @@ import logoTerra from "@/assets/press/terra.png";
 import logoACidadeOn from "@/assets/press/a-cidade-on.png";
 import logoEdicase from "@/assets/press/portal-edicase.png";
 import logoTNH1 from "@/assets/press/tnh1.png";
+import logoPortalTela from "@/assets/press/portal-tela.png";
+import logoOpiniaoRH from "@/assets/press/opiniao-rh.png";
+import logoFocoNosNegocios from "@/assets/press/foco-nos-negocios.png";
+import logoTudoNoticias from "@/assets/press/tudo-noticias.png";
+import logoAGazetaMG from "@/assets/press/a-gazeta-mg.png";
+import logoDiarioPaulista from "@/assets/press/diario-paulista.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
