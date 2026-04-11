@@ -4,6 +4,7 @@ import About from "@/components/About";
 import FlowCommerce from "@/components/FlowCommerce";
 import Pablo from "@/components/Pablo";
 import Press from "@/components/Press";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <FlowCommerce />
       <Pablo />
       <Press />
+      <Contact />
       <Footer />
     </div>
   );
