@@ -10,6 +10,12 @@ import logoTerra from "@/assets/press/terra.png";
 import logoACidadeOn from "@/assets/press/a-cidade-on.png";
 import logoEdicase from "@/assets/press/portal-edicase.png";
 import logoTNH1 from "@/assets/press/tnh1.png";
+import logoPortalTela from "@/assets/press/portal-tela.png";
+import logoOpiniaoRH from "@/assets/press/opiniao-rh.png";
+import logoFocoNosNegocios from "@/assets/press/foco-nos-negocios.png";
+import logoTudoNoticias from "@/assets/press/tudo-noticias.png";
+import logoAGazetaMG from "@/assets/press/a-gazeta-mg.png";
+import logoDiarioPaulista from "@/assets/press/diario-paulista.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -36,6 +42,12 @@ const outlets = [
   { name: "TNH1", logo: logoTNH1, lightInvert: true, url: "https://www.tnh1.com.br/amp/nid/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-6571/" },
   { name: "A Cidade ON", logo: logoACidadeOn, lightInvert: true, url: "https://acidadeon.com/tudoep/tudo-inovacao/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio/" },
   { name: "Portaledicase", logo: logoEdicase, lightInvert: false, url: "https://portaledicase.com/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio/" },
+  { name: "Portal Tela", logo: logoPortalTela, lightInvert: true, url: "https://www.portaltela.com/noticias/economia/2026/04/10/tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio/" },
+  { name: "Opinião RH", logo: logoOpiniaoRH, lightInvert: false, url: "https://opiniaorh.com/2026/04/10/quando-a-tecnologia-deixa-de-resolver-problemas-para-comecar-a-criar-possibilidades/" },
+  { name: "Foco nos Negócios", logo: logoFocoNosNegocios, lightInvert: false, url: "https://www.foconosnegocios.com.br/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
+  { name: "Tudo Notícias", logo: logoTudoNoticias, lightInvert: false, url: "https://tudonoticias.online/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
+  { name: "A Gazeta", logo: logoAGazetaMG, lightInvert: false, url: "https://agazetamg.com/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
+  { name: "Diário Paulista", logo: logoDiarioPaulista, lightInvert: false, url: "https://diariopaulista.com/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
 ];
 
 const Press = () => {
