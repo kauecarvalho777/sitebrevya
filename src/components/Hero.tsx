@@ -24,7 +24,7 @@ const Hero = () => {
 
         <TextGenerateEffect
           words="Tecnologia, estratégia e inovação para empresas que querem crescer além do óbvio."
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl !leading-[1.05] tracking-tight bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl !leading-[1.05] tracking-tight text-foreground [&_span]:!bg-gradient-to-r [&_span]:!from-foreground [&_span]:!via-primary [&_span]:!to-foreground [&_span]:!bg-clip-text [&_span]:!text-transparent"
           duration={0.4}
         />
 
