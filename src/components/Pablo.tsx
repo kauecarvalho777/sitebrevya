@@ -24,9 +24,9 @@ const Pablo = () => {
       <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="hsl(56 18% 51%)" />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <FadeIn>
-            <div className="lg:col-span-2 relative group">
+            <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-tr from-primary/30 to-transparent rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
               <motion.img
                 src={pabloImg}
