@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/logo_brevya.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { dark, toggle } = useTheme();
 
   const links = [
     { label: "Sobre", href: "#sobre" },
@@ -16,7 +18,11 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
         <a href="#" className="flex items-center">
-          <img src={logo} alt="Brevya" className="h-6" />
+          <img
+            src={logo}
+            alt="Brevya"
+            className={`h-6 ${dark ? "" : "invert"}`}
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -29,6 +35,15 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+
+          <button
+            onClick={toggle}
+            className="w-9 h-9 rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            aria-label="Alternar tema"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
           <a
             href="#contato"
             className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-md hover:bg-gold-light transition-colors"
@@ -37,12 +52,21 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={toggle}
+            className="w-9 h-9 rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground"
+            aria-label="Alternar tema"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            className="text-foreground"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {open && (
