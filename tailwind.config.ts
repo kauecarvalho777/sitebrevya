@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      backgroundImage: {
+        "gradient-conic": "conic-gradient(var(--conic-position), var(--tw-gradient-stops))",
+      },
       fontFamily: {
         sans: ["Montserrat", "sans-serif"],
         display: ["Montserrat", "sans-serif"],

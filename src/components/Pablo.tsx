@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Spotlight } from "@/components/ui/aceternity/spotlight";
 import pabloImg from "@/assets/pablo-portrait.jpg";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
@@ -19,16 +20,23 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const Pablo = () => {
   return (
-    <section id="pablo" className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+    <section id="pablo" className="relative py-24 lg:py-32 overflow-hidden">
+      <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="hsl(56 18% 51%)" />
+
+      <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 items-center">
           <FadeIn>
-            <div className="lg:col-span-2 relative">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-transparent rounded-3xl blur-2xl" />
-              <img
+            <div className="lg:col-span-2 relative group">
+              <div className="absolute -inset-1 bg-gradient-to-tr from-primary/30 to-transparent rounded-2xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+              <motion.img
                 src={pabloImg}
                 alt="Pablo Rodrigues Nunes — Fundador e CEO da Brevya"
-                className="relative rounded-2xl w-full object-cover aspect-[3/4]"
+                className="relative rounded-2xl w-full object-cover aspect-[3/4] border border-border"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                loading="lazy"
+                width={800}
+                height={1024}
               />
               <p className="mt-3 text-xs text-muted-foreground italic text-center">
                 Visão estratégica, leitura de mercado e construção de novas possibilidades através
@@ -39,9 +47,12 @@ const Pablo = () => {
 
           <div className="lg:col-span-3 space-y-6">
             <FadeIn delay={0.1}>
-              <p className="text-primary font-semibold text-sm tracking-widest uppercase">
-                Fundador & CEO
-              </p>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-px flex-1 max-w-[40px] bg-primary" />
+                <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+                  Fundador & CEO
+                </span>
+              </div>
               <h2 className="text-2xl md:text-3xl font-bold leading-tight mt-2">
                 Por trás da Brevya, existe uma visão de futuro{" "}
                 <span className="text-gradient-gold">aplicada no presente.</span>
@@ -73,7 +84,11 @@ const Pablo = () => {
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <blockquote className="border-l-2 border-primary pl-5 py-3 bg-surface-elevated rounded-r-lg">
+              <motion.blockquote
+                className="border-l-2 border-primary pl-5 py-4 bg-surface-elevated rounded-r-lg"
+                whileHover={{ x: 4 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
                 <p className="text-foreground font-semibold text-base md:text-lg italic">
                   "O ponto central da Brevya não é apenas desenvolver soluções, mas influenciar a
                   maneira como o mercado pensa tecnologia."
@@ -81,7 +96,7 @@ const Pablo = () => {
                 <cite className="mt-2 block text-xs text-primary font-medium not-italic">
                   Pablo Rodrigues Nunes
                 </cite>
-              </blockquote>
+              </motion.blockquote>
             </FadeIn>
           </div>
         </div>

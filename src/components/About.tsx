@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Lightbulb, Search, Code2, ArrowRightLeft } from "lucide-react";
+import { LampContainer } from "@/components/ui/aceternity/lamp";
+import { CardSpotlight } from "@/components/ui/aceternity/card-spotlight";
 
 const pillars = [
   {
@@ -43,17 +44,22 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const About = () => {
   return (
-    <section id="sobre" className="py-24 lg:py-32">
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-        <FadeIn>
-          <h2 className="text-2xl md:text-4xl font-bold leading-tight">
-            A Brevya nasceu para transformar tecnologia em{" "}
-            <span className="text-gradient-gold">vantagem competitiva.</span>
-          </h2>
-        </FadeIn>
+    <section id="sobre">
+      <LampContainer className="min-h-[500px]">
+        <motion.h2
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          className="text-center text-2xl md:text-4xl font-bold leading-tight max-w-3xl bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text text-transparent"
+        >
+          A Brevya nasceu para transformar tecnologia em{" "}
+          <span className="text-gradient-gold bg-clip-text">vantagem competitiva.</span>
+        </motion.h2>
+      </LampContainer>
 
+      <div className="container mx-auto px-4 lg:px-8 max-w-5xl -mt-20 relative z-10">
         <FadeIn delay={0.15}>
-          <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed text-sm md:text-base max-w-3xl">
+          <div className="space-y-5 text-muted-foreground leading-relaxed text-sm md:text-base max-w-3xl mx-auto">
             <p>
               A Brevya é uma empresa brasileira de tecnologia e consultoria, especializada em
               inovação estratégica, automação e inteligência artificial.
@@ -68,32 +74,32 @@ const About = () => {
               Mais do que desenvolver sistemas, a Brevya atua na transformação de processos
               operacionais em estruturas mais inteligentes, conectadas e escaláveis.
             </p>
-            <p className="text-foreground/80 font-medium italic border-l-2 border-primary pl-4">
+            <blockquote className="text-foreground/80 font-medium italic border-l-2 border-primary pl-4 py-2">
               No centro da empresa está uma tese simples: tecnologia não deve apenas sustentar o
               presente de uma empresa. Ela deve abrir caminho para o futuro dela.
-            </p>
+            </blockquote>
           </div>
         </FadeIn>
 
         {/* Pillars */}
         <FadeIn delay={0.2}>
-          <h3 className="mt-20 text-xl md:text-2xl font-bold">
+          <h3 className="mt-20 text-xl md:text-2xl font-bold text-center">
             Quatro pilares sustentam a forma como a Brevya constrói.
           </h3>
         </FadeIn>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
+        <div className="mt-10 grid md:grid-cols-2 gap-6 pb-24">
           {pillars.map((p, i) => (
             <FadeIn key={p.title} delay={0.1 * i}>
-              <div className="bg-surface-elevated rounded-lg p-6 border border-border hover:border-primary/30 transition-colors group">
+              <CardSpotlight className="h-full">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                  <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                     <p.icon size={20} />
                   </div>
-                  <h4 className="font-semibold text-sm md:text-base">{p.title}</h4>
+                  <h4 className="font-semibold text-sm md:text-base text-foreground">{p.title}</h4>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
-              </div>
+              </CardSpotlight>
             </FadeIn>
           ))}
         </div>
