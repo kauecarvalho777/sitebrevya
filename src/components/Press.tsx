@@ -34,7 +34,7 @@ const outlets = [
   { name: "SEGS", logo: logoSegs },
   { name: "Portal Da Mídia", logo: logoPortalDaMidia },
   { name: "GZH", logo: null },
-  { name: "TNH1", logo: null },
+  { name: "TNH1", logo: logoTNH1 },
   { name: "A Cidade ON", logo: logoACidadeOn },
   { name: "Portaledicase", logo: logoEdicase },
 ];
