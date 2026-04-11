@@ -45,7 +45,6 @@
     --sidebar-border: 40 10% 85%;
     --sidebar-ring: 56 18% 42%;
 
-    /* Custom tokens */
     --gold: 56 18% 42%;
     --gold-light: 56 18% 55%;
     --gold-dark: 56 18% 33%;
@@ -120,10 +119,6 @@
     background-image: linear-gradient(135deg, hsl(56 18% 51%), hsl(56 18% 70%));
   }
 
-  .dark .text-gradient-gold {
-    background-image: linear-gradient(135deg, hsl(56 18% 51%), hsl(56 18% 70%));
-  }
-
   .border-gold-subtle {
     border-color: hsl(56 18% 51% / 0.2);
   }
@@ -135,4 +130,61 @@
   .bg-surface-elevated {
     background-color: hsl(var(--surface-elevated));
   }
+}
+
+/* Aceternity animations */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-meteor {
+  animation: meteor 5s linear infinite;
 }
