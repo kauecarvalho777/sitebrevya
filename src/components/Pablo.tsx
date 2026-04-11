@@ -45,7 +45,7 @@ const Pablo = () => {
             </div>
           </FadeIn>
 
-          <div className="lg:col-span-3 space-y-6">
+          <div className="space-y-6">
             <FadeIn delay={0.1}>
               <div className="flex items-center gap-3 mb-2">
                 <div className="h-px flex-1 max-w-[40px] bg-primary" />
