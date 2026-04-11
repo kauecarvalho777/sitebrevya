@@ -74,7 +74,7 @@ const Footer = () => {
           <img
             src={logo}
             alt="Brevya"
-            className={`h-5 opacity-60 ${dark ? "" : "invert"}`}
+            className={`h-7 opacity-60 ${dark ? "" : "invert"}`}
           />
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Brevya. Todos os direitos reservados.
