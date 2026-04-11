@@ -8,6 +8,8 @@ import logoSegs from "@/assets/press/segs.png";
 import logoOGlobo from "@/assets/press/o-globo.png";
 import logoPortalDaMidia from "@/assets/press/portal-da-midia.png";
 import logoTerra from "@/assets/press/terra.png";
+import logoACidadeOn from "@/assets/press/a-cidade-on.png";
+import logoEdicase from "@/assets/press/portal-edicase.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
