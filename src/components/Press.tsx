@@ -78,7 +78,7 @@ const Press = () => {
                   <img
                     src={outlet.logo}
                     alt={outlet.name}
-                    className="max-h-8 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                    className="max-h-8 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                   />
                 ) : (
                   <span className="text-sm font-bold text-foreground/60 group-hover:text-foreground/100 whitespace-nowrap transition-colors">
