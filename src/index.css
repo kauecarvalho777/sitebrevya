@@ -6,6 +6,54 @@
 
 @layer base {
   :root {
+    --background: 40 20% 97%;
+    --foreground: 0 0% 8%;
+
+    --card: 40 15% 95%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 40 15% 95%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 56 18% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 10% 90%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 40 10% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 56 18% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 10% 85%;
+    --input: 40 10% 85%;
+    --ring: 56 18% 42%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 40 15% 95%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 56 18% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 10% 90%;
+    --sidebar-accent-foreground: 0 0% 25%;
+    --sidebar-border: 40 10% 85%;
+    --sidebar-ring: 56 18% 42%;
+
+    /* Custom tokens */
+    --gold: 56 18% 42%;
+    --gold-light: 56 18% 55%;
+    --gold-dark: 56 18% 33%;
+    --surface: 40 15% 94%;
+    --surface-elevated: 40 12% 91%;
+  }
+
+  .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
@@ -34,8 +82,6 @@
     --input: 0 0% 16%;
     --ring: 56 18% 51%;
 
-    --radius: 0.5rem;
-
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 83%;
     --sidebar-primary: 56 18% 51%;
@@ -45,7 +91,6 @@
     --sidebar-border: 0 0% 16%;
     --sidebar-ring: 56 18% 51%;
 
-    /* Custom tokens */
     --gold: 56 18% 51%;
     --gold-light: 56 18% 65%;
     --gold-dark: 56 18% 40%;
@@ -72,6 +117,10 @@
 @layer utilities {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(56 18% 51%), hsl(56 18% 70%));
+  }
+
+  .dark .text-gradient-gold {
     background-image: linear-gradient(135deg, hsl(56 18% 51%), hsl(56 18% 70%));
   }
 
