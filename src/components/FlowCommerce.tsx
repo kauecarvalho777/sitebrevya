@@ -114,33 +114,31 @@ const FlowCommerce = () => {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <TracingBeam>
-              <div className="pl-8">
-                <h3 className="font-bold text-lg md:text-xl mb-2 text-foreground">
-                  Uma nova lógica de e-commerce construída dentro do WhatsApp.
-                </h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Sem redirecionamento. Sem atrito. Sem quebra de jornada.
-                </p>
-                <ul className="space-y-4">
-                  {clientFeatures.map((f, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-center gap-3 text-sm text-foreground/90"
-                    >
-                      <span className="w-7 h-7 rounded-full bg-primary/15 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0">
-                        {i + 1}
-                      </span>
-                      {f}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </TracingBeam>
+            <div>
+              <h3 className="font-bold text-lg md:text-xl mb-2 text-foreground">
+                Uma nova lógica de e-commerce construída dentro do WhatsApp.
+              </h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Sem redirecionamento. Sem atrito. Sem quebra de jornada.
+              </p>
+              <ul className="space-y-4">
+                {clientFeatures.map((f, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3 text-sm text-foreground/90"
+                  >
+                    <span className="w-7 h-7 rounded-full bg-primary/15 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    {f}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </FadeIn>
         </div>
 
