@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { MessageSquare, CheckCheck, ChevronLeft, ArrowRight, Send } from "lucide-react";
+import { MessageSquare, CheckCheck, ChevronLeft, Send, Phone, MoreVertical, Search, Smile, Paperclip, Mic, Camera } from "lucide-react";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -20,16 +20,15 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 const WHATSAPP_NUMBER = "551153041000";
 
 const Contact = () => {
-  const currentTime = "10:32";
   const [screen, setScreen] = useState<"chat" | "flow" | "done">("chat");
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "Obrigatório";
-    if (!form.phone.trim()) e.phone = "Obrigatório";
-    if (!form.email.trim()) e.email = "Obrigatório";
+    if (!form.name.trim()) e.name = "Campo obrigatório";
+    if (!form.phone.trim()) e.phone = "Campo obrigatório";
+    if (!form.email.trim()) e.email = "Campo obrigatório";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "E-mail inválido";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -76,16 +75,32 @@ const Contact = () => {
           {/* WhatsApp Phone Mockup */}
           <FadeIn delay={0.15}>
             <div className="flex justify-center">
-              <div className="w-[300px] md:w-[340px] rounded-[2.5rem] border-[6px] border-foreground/20 bg-[#0b141a] shadow-2xl overflow-hidden relative">
-                {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-foreground/20 rounded-b-2xl z-10" />
+              {/* Phone frame */}
+              <div className="w-[300px] md:w-[340px] rounded-[2.5rem] border-[6px] border-[#2a2a2e] bg-[#0b141a] shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative">
+                {/* Notch / Dynamic Island */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[22px] bg-[#0b141a] rounded-b-2xl z-20" />
 
                 {/* Status bar */}
-                <div className="h-10 bg-[#1f2c34] flex items-end justify-between px-5 pb-1 text-[10px] text-white/60">
-                  <span>{currentTime}</span>
-                  <div className="flex items-center gap-1">
-                    <div className="w-3.5 h-2 border border-white/60 rounded-sm relative">
-                      <div className="absolute inset-[1px] right-[2px] bg-white/60 rounded-[1px]" />
+                <div className="h-[44px] bg-[#0b141a] flex items-end justify-between px-6 pb-1.5 text-[11px] text-white/80 font-medium z-10 relative">
+                  <span>9:41</span>
+                  <div className="flex items-center gap-1.5">
+                    {/* Signal */}
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="white" opacity="0.8">
+                      <rect x="0" y="8" width="3" height="4" rx="0.5" />
+                      <rect x="4.5" y="5" width="3" height="7" rx="0.5" />
+                      <rect x="9" y="2" width="3" height="10" rx="0.5" />
+                      <rect x="13.5" y="0" width="3" height="12" rx="0.5" opacity="0.3" />
+                    </svg>
+                    {/* WiFi */}
+                    <svg width="14" height="11" viewBox="0 0 14 11" fill="white" opacity="0.8">
+                      <path d="M7 9.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM3.05 7.36a5.5 5.5 0 017.9 0l-.94.94a4 4 0 00-6.02 0l-.94-.94zM.93 5.24a8.5 8.5 0 0112.14 0l-.94.94a7 7 0 00-10.26 0L.93 5.24z" />
+                    </svg>
+                    {/* Battery */}
+                    <div className="flex items-center gap-0.5">
+                      <div className="w-[22px] h-[10px] border border-white/60 rounded-[2px] relative p-[1px]">
+                        <div className="h-full w-[70%] bg-white/80 rounded-[1px]" />
+                      </div>
+                      <div className="w-[1.5px] h-[4px] bg-white/60 rounded-r-sm" />
                     </div>
                   </div>
                 </div>
@@ -95,63 +110,110 @@ const Contact = () => {
                     <motion.div
                       key="chat"
                       initial={{ opacity: 1 }}
-                      exit={{ opacity: 0, x: -30 }}
-                      transition={{ duration: 0.25 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex flex-col"
                     >
-                      {/* Chat header */}
-                      <div className="bg-[#1f2c34] px-3 py-2 flex items-center gap-3 border-b border-white/5">
-                        <div className="w-9 h-9 rounded-full bg-primary/30 flex items-center justify-center text-primary font-bold text-xs">
-                          B
+                      {/* WhatsApp header */}
+                      <div className="bg-[#1f2c34] px-2 py-1.5 flex items-center gap-2">
+                        <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
+                        <div className="w-[34px] h-[34px] rounded-full bg-[#2a3942] flex items-center justify-center shrink-0 overflow-hidden">
+                          <div className="w-full h-full rounded-full bg-primary/40 flex items-center justify-center text-primary font-bold text-[11px]">B</div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-semibold truncate">Brevya</p>
-                          <p className="text-[11px] text-green-400">online</p>
+                          <p className="text-white text-[15px] font-normal leading-tight truncate">Brevya</p>
+                          <p className="text-[12px] text-white/60 leading-tight">online</p>
+                        </div>
+                        <div className="flex items-center gap-4 text-white/70">
+                          <Phone size={18} />
+                          <MoreVertical size={18} />
                         </div>
                       </div>
 
-                      {/* Chat body */}
+                      {/* Chat area */}
                       <div
-                        className="px-3 py-4 space-y-3 min-h-[340px] flex flex-col justify-end"
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                          backgroundColor: "#0b141a",
-                        }}
+                        className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end"
+                        style={{ backgroundColor: "#0b141a" }}
                       >
-                        <div className="flex justify-center mb-2">
-                          <span className="bg-[#182229] text-white/50 text-[11px] px-3 py-1 rounded-lg">HOJE</span>
+                        {/* Encryption notice */}
+                        <div className="flex justify-center mb-3">
+                          <div className="bg-[#182229] rounded-lg px-3 py-1.5 flex items-center gap-1.5">
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
+                              <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
+                            </svg>
+                            <span className="text-[11px] text-[#8696a0] leading-tight text-center">
+                              As mensagens são protegidas com a criptografia de ponta a ponta.
+                            </span>
+                          </div>
                         </div>
 
-                        <div className="max-w-[85%] self-start">
-                          <div className="bg-[#1f2c34] rounded-xl rounded-tl-sm px-3 py-2 shadow-sm">
-                            <div className="bg-primary/10 rounded-lg p-2.5 mb-2 border border-primary/20">
-                              <p className="text-primary font-semibold text-xs">✨ Brevya Solutions</p>
-                            </div>
-                            <p className="text-white text-[13px] leading-relaxed">
-                              Olá! 👋 Bem-vindo à <span className="font-semibold text-primary">Brevya</span>.
+                        {/* Date chip */}
+                        <div className="flex justify-center mb-3">
+                          <span className="bg-[#182229] text-[#8696a0] text-[11px] px-3 py-1 rounded-lg font-medium">
+                            HOJE
+                          </span>
+                        </div>
+
+                        {/* Incoming message bubble */}
+                        <div className="max-w-[88%] self-start mb-1.5">
+                          <div className="bg-[#1f2c34] rounded-[10px] rounded-tl-[3px] px-2.5 py-1.5 shadow-sm relative">
+                            {/* Tail */}
+                            <div className="absolute -left-[6px] top-0 w-0 h-0 border-t-[8px] border-t-[#1f2c34] border-l-[8px] border-l-transparent" />
+                            <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
+                              Olá! 👋 Bem-vindo à <span className="font-medium">Brevya</span>.
                             </p>
-                            <p className="text-white text-[13px] leading-relaxed mt-1.5">
-                              Somos especialistas em <span className="font-semibold">automação</span> e{" "}
-                              <span className="font-semibold">inteligência artificial</span> para empresas que querem escalar resultados.
+                            <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-1">
+                              Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
                             </p>
-                            <p className="text-white text-[13px] leading-relaxed mt-1.5">
-                              Preencha seus dados e fale com nosso time! 🚀
-                            </p>
-                            <div className="flex items-center justify-end gap-1 mt-1">
-                              <span className="text-[10px] text-white/40">{currentTime}</span>
-                              <CheckCheck size={13} className="text-blue-400" />
+                            <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
+                              <span className="text-[11px] text-[#8696a0]">9:41</span>
+                              <CheckCheck size={15} className="text-[#53bdeb]" />
                             </div>
                           </div>
                         </div>
 
-                        {/* CTA button inside chat */}
-                        <div className="max-w-[85%] self-start">
-                          <button
-                            onClick={() => setScreen("flow")}
-                            className="w-full bg-[#1f2c34] border border-primary/30 rounded-xl px-3 py-3 text-primary text-[13px] font-medium text-center hover:bg-primary/10 transition-colors flex items-center justify-center gap-2"
-                          >
-                            📋 Preencher meus dados
-                            <ArrowRight size={14} />
-                          </button>
+                        {/* Template card with button */}
+                        <div className="max-w-[88%] self-start">
+                          <div className="bg-[#1f2c34] rounded-[10px] rounded-tl-[3px] overflow-hidden shadow-sm">
+                            {/* Template content */}
+                            <div className="px-2.5 py-1.5">
+                              <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
+                                Quer falar com nosso time? Preencha seus dados clicando no botão abaixo 👇
+                              </p>
+                              <div className="flex items-center justify-end gap-1 mt-0.5">
+                                <span className="text-[11px] text-[#8696a0]">9:41</span>
+                                <CheckCheck size={15} className="text-[#53bdeb]" />
+                              </div>
+                            </div>
+                            {/* Template button */}
+                            <div className="border-t border-[#8696a0]/15">
+                              <button
+                                onClick={() => setScreen("flow")}
+                                className="w-full py-2.5 flex items-center justify-center gap-2 text-[#53bdeb] text-[14px] font-normal hover:bg-white/5 transition-colors"
+                              >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                  <line x1="9" y1="9" x2="15" y2="9" />
+                                  <line x1="9" y1="13" x2="15" y2="13" />
+                                  <line x1="9" y1="17" x2="12" y2="17" />
+                                </svg>
+                                Preencher dados
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Message input bar */}
+                      <div className="bg-[#0b141a] px-2 py-1.5 flex items-end gap-1.5">
+                        <div className="flex-1 bg-[#1f2c34] rounded-full px-3 py-2 flex items-center gap-2">
+                          <Smile size={22} className="text-[#8696a0] shrink-0" />
+                          <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
+                          <Paperclip size={20} className="text-[#8696a0] shrink-0 rotate-45" />
+                          <Camera size={20} className="text-[#8696a0] shrink-0" />
+                        </div>
+                        <div className="w-[42px] h-[42px] rounded-full bg-[#00a884] flex items-center justify-center shrink-0">
+                          <Mic size={20} className="text-white" />
                         </div>
                       </div>
                     </motion.div>
@@ -160,47 +222,54 @@ const Contact = () => {
                   {screen === "flow" && (
                     <motion.div
                       key="flow"
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -30 }}
-                      transition={{ duration: 0.25 }}
+                      initial={{ y: "100%" }}
+                      animate={{ y: 0 }}
+                      exit={{ y: "100%" }}
+                      transition={{ type: "spring", damping: 28, stiffness: 300 }}
+                      className="flex flex-col"
                     >
-                      {/* Flow header */}
+                      {/* Flow header - green bar like real WA Flows */}
                       <div className="bg-[#00a884] px-3 py-2.5 flex items-center gap-3">
-                        <button onClick={() => setScreen("chat")} className="text-white hover:text-white/80 transition-colors">
-                          <ChevronLeft size={20} />
+                        <button onClick={() => setScreen("chat")} className="text-white">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                          </svg>
                         </button>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-semibold">Brevya — Contato</p>
-                          <p className="text-[11px] text-white/70">Preencha seus dados</p>
+                          <p className="text-white text-[16px] font-medium">Brevya</p>
                         </div>
                       </div>
 
-                      {/* Flow form */}
-                      <div className="bg-[#111b21] px-4 py-5 min-h-[340px] flex flex-col">
-                        <p className="text-white/70 text-[12px] mb-4">Precisamos de algumas informações para entrar em contato com você.</p>
+                      {/* Flow title bar */}
+                      <div className="bg-[#111b21] px-4 py-3 border-b border-[#8696a0]/10">
+                        <p className="text-white text-[16px] font-semibold">Fale com a gente</p>
+                        <p className="text-[#8696a0] text-[13px] mt-0.5">Preencha seus dados abaixo</p>
+                      </div>
 
-                        <div className="space-y-4 flex-1">
-                          {/* Name */}
+                      {/* Flow form body */}
+                      <div className="bg-[#111b21] px-4 py-4 min-h-[330px] flex flex-col">
+                        <div className="space-y-5 flex-1">
+                          {/* Name field */}
                           <div>
-                            <label className="text-white/50 text-[11px] font-medium uppercase tracking-wider mb-1 block">
-                              Nome completo *
+                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
+                              Nome completo <span className="text-red-400">*</span>
                             </label>
                             <input
                               type="text"
                               value={form.name}
                               onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
                               maxLength={100}
-                              placeholder="Seu nome"
-                              className="w-full bg-[#1f2c34] border border-white/10 rounded-lg px-3 py-2.5 text-white text-[13px] placeholder:text-white/25 focus:outline-none focus:border-[#00a884] transition-colors"
+                              placeholder="Digite seu nome"
+                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
                             />
-                            {errors.name && <p className="text-red-400 text-[11px] mt-1">{errors.name}</p>}
+                            {errors.name && <p className="text-[#ef4444] text-[12px] mt-1">{errors.name}</p>}
                           </div>
 
-                          {/* Phone */}
+                          {/* Phone field */}
                           <div>
-                            <label className="text-white/50 text-[11px] font-medium uppercase tracking-wider mb-1 block">
-                              Telefone *
+                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
+                              Telefone <span className="text-red-400">*</span>
                             </label>
                             <input
                               type="tel"
@@ -208,15 +277,15 @@ const Contact = () => {
                               onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
                               maxLength={20}
                               placeholder="(00) 00000-0000"
-                              className="w-full bg-[#1f2c34] border border-white/10 rounded-lg px-3 py-2.5 text-white text-[13px] placeholder:text-white/25 focus:outline-none focus:border-[#00a884] transition-colors"
+                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
                             />
-                            {errors.phone && <p className="text-red-400 text-[11px] mt-1">{errors.phone}</p>}
+                            {errors.phone && <p className="text-[#ef4444] text-[12px] mt-1">{errors.phone}</p>}
                           </div>
 
-                          {/* Email */}
+                          {/* Email field */}
                           <div>
-                            <label className="text-white/50 text-[11px] font-medium uppercase tracking-wider mb-1 block">
-                              E-mail *
+                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
+                              E-mail <span className="text-red-400">*</span>
                             </label>
                             <input
                               type="email"
@@ -224,20 +293,27 @@ const Contact = () => {
                               onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
                               maxLength={255}
                               placeholder="seu@email.com"
-                              className="w-full bg-[#1f2c34] border border-white/10 rounded-lg px-3 py-2.5 text-white text-[13px] placeholder:text-white/25 focus:outline-none focus:border-[#00a884] transition-colors"
+                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
                             />
-                            {errors.email && <p className="text-red-400 text-[11px] mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-[#ef4444] text-[12px] mt-1">{errors.email}</p>}
                           </div>
                         </div>
 
-                        {/* Submit */}
-                        <button
-                          onClick={handleSubmit}
-                          className="mt-5 w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#00a884] text-white font-semibold text-[13px] hover:bg-[#00976e] transition-all duration-200"
-                        >
-                          <Send size={14} />
-                          Enviar e abrir WhatsApp
-                        </button>
+                        {/* Flow footer button */}
+                        <div className="mt-4 pt-3 border-t border-[#8696a0]/10">
+                          <button
+                            onClick={handleSubmit}
+                            className="w-full py-3.5 rounded-full bg-[#00a884] text-white font-semibold text-[15px] hover:bg-[#00976e] transition-all duration-200 active:scale-[0.98]"
+                          >
+                            Continuar
+                          </button>
+                          <p className="text-center text-[11px] text-[#8696a0] mt-2.5 flex items-center justify-center gap-1">
+                            <svg width="10" height="10" viewBox="0 0 16 16" fill="#8696a0">
+                              <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" />
+                            </svg>
+                            Dados protegidos pela Brevya
+                          </p>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -248,25 +324,25 @@ const Contact = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3 }}
+                      className="flex flex-col"
                     >
-                      {/* Done header */}
                       <div className="bg-[#00a884] px-3 py-2.5 flex items-center gap-3">
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-semibold text-center">Brevya — Contato</p>
+                        <div className="flex-1">
+                          <p className="text-white text-[16px] font-medium text-center">Brevya</p>
                         </div>
                       </div>
 
-                      <div className="bg-[#111b21] px-4 py-5 min-h-[340px] flex flex-col items-center justify-center text-center">
+                      <div className="bg-[#111b21] px-4 py-5 min-h-[385px] flex flex-col items-center justify-center text-center">
                         <div className="w-16 h-16 rounded-full bg-[#00a884]/20 flex items-center justify-center mb-4">
                           <CheckCheck size={32} className="text-[#00a884]" />
                         </div>
-                        <p className="text-white font-semibold text-lg">Dados enviados!</p>
-                        <p className="text-white/50 text-[13px] mt-2 max-w-[220px]">
+                        <p className="text-[#e9edef] font-semibold text-lg">Dados enviados!</p>
+                        <p className="text-[#8696a0] text-[14px] mt-2 max-w-[240px] leading-relaxed">
                           Sua conversa foi aberta no WhatsApp. Nossa equipe responderá em breve! 🚀
                         </p>
                         <button
                           onClick={() => { setScreen("chat"); setForm({ name: "", phone: "", email: "" }); }}
-                          className="mt-6 text-[#00a884] text-[13px] font-medium hover:underline"
+                          className="mt-6 text-[#00a884] text-[14px] font-medium hover:underline"
                         >
                           Voltar ao início
                         </button>
