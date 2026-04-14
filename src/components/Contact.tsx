@@ -245,16 +245,16 @@ const Contact = () => {
                          ))}
                        </div>
                      )}
-                     <div className="flex items-end gap-[5px]">
-                       <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
-                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="2" strokeLinecap="round">
+                     <div className="flex items-end gap-1">
+                       <div className="w-[36px] h-[36px] flex items-center justify-center shrink-0">
+                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="2" strokeLinecap="round">
                            <line x1="12" y1="5" x2="12" y2="19" />
                            <line x1="5" y1="12" x2="19" y2="12" />
                          </svg>
                        </div>
-                       <div className="flex-1 bg-[#2a3942] rounded-[21px] px-3 py-[7px] flex items-center gap-2 min-h-[42px]">
+                       <div className="flex-1 min-w-0 bg-[#2a3942] rounded-[21px] px-2.5 py-[6px] flex items-center gap-1.5 min-h-[36px]">
                          <button onClick={() => setShowEmojiPicker(p => !p)} className="shrink-0">
-                           <Smile size={22} className={`${showEmojiPicker ? 'text-[#00a884]' : 'text-[#8696a0]'} transition-colors`} />
+                           <Smile size={20} className={`${showEmojiPicker ? 'text-[#00a884]' : 'text-[#8696a0]'} transition-colors`} />
                          </button>
                          <input
                            type="text"
@@ -262,18 +262,16 @@ const Contact = () => {
                            onChange={(e) => setInputMsg(e.target.value)}
                            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                            placeholder="Mensagem"
-                           className="flex-1 bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#8696a0]"
+                           className="flex-1 min-w-0 bg-transparent text-[#e9edef] text-[14px] focus:outline-none placeholder:text-[#8696a0]"
                          />
-                         <Camera size={22} className="text-[#8696a0] shrink-0" />
                        </div>
-                       {/* Send or Mic button */}
                        {inputMsg.trim() ? (
-                         <button onClick={sendMessage} className="w-[42px] h-[42px] flex items-center justify-center shrink-0 bg-[#00a884] rounded-full">
-                           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
+                         <button onClick={sendMessage} className="w-[36px] h-[36px] flex items-center justify-center shrink-0 bg-[#00a884] rounded-full">
+                           <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
                          </button>
                        ) : (
-                         <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
-                           <Mic size={24} className="text-[#8696a0]" />
+                         <div className="w-[36px] h-[36px] flex items-center justify-center shrink-0">
+                           <Mic size={22} className="text-[#8696a0]" />
                          </div>
                        )}
                      </div>
