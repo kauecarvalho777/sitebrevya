@@ -20,7 +20,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const Pablo = () => {
   return (
-    <section id="pablo" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="pablo" className="relative pt-24 lg:pt-32 pb-8 lg:pb-12 overflow-hidden">
       <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="hsl(56 18% 51%)" />
 
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl relative z-10">
