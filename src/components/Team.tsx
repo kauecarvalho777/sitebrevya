@@ -22,7 +22,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 };
 
 const team = [
-  { name: "Kauê Carvalho", role: "COO", image: kaueImg },
+  { name: "Kauê Carvalho", role: "Co-Fundador", image: kaueImg },
   { name: "Marcos Smeets", role: "Software Engineer", image: marcosImg },
   { name: "João Victor", role: "Data Analyst", image: joaoImg },
   { name: "Yan Laurentino", role: "Vídeo Maker", image: yanImg },
