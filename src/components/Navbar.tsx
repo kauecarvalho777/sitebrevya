@@ -8,10 +8,14 @@ const Navbar = () => {
   const { dark, toggle } = useTheme();
 
   const links = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Flow Commerce", href: "#flow-commerce" },
+    { label: "Início", href: "#" },
+    { label: "A Brevya", href: "#sobre" },
+    { label: "FlowCommerce", href: "#flow-commerce" },
+    { label: "Cases", href: "#cases" },
     { label: "Fundador", href: "#pablo" },
+    { label: "Equipe", href: "#equipe" },
     { label: "Imprensa", href: "#imprensa" },
+    { label: "Contato", href: "#contato" },
   ];
 
   return (
