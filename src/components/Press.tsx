@@ -90,7 +90,7 @@ const Press = () => {
                   <img
                     src={outlet.logo}
                     alt={outlet.name}
-                    className={`max-h-8 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${outlet.lightInvert ? "dark:invert-0 invert" : ""}`}
+                    className="max-h-8 w-auto object-contain grayscale brightness-0 dark:brightness-0 dark:invert opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 transition-all duration-300"
                   />
                 ) : (
                   <span className="text-sm font-bold text-foreground/60 group-hover:text-foreground/100 whitespace-nowrap transition-colors">
