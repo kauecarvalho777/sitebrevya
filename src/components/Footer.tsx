@@ -70,13 +70,13 @@ const Footer = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
-        <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="container mx-auto px-4 lg:px-8 flex flex-col items-center gap-3 text-center">
           <img
             src={logo}
             alt="Brevya"
             className={`h-9 opacity-60 ${dark ? "" : "invert"}`}
           />
-          <div className="flex flex-col items-center md:items-end gap-1 text-xs text-muted-foreground">
+          <div className="flex flex-col items-center gap-1 text-xs text-muted-foreground">
             <p>CNPJ: 62.319.275/0001-40</p>
             <p>Alameda Terracota, 185, Cerâmica — São Caetano do Sul/SP, 09531-190</p>
             <p className="mt-1">© {new Date().getFullYear()} Brevya. Todos os direitos reservados.</p>
