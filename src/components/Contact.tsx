@@ -137,100 +137,130 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Chat area */}
-                  <div
-                    className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end relative"
-                    style={{
-                      backgroundImage: `url(${waChatBg})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                    {/* Encryption notice */}
-                    <div className="flex justify-center mb-3">
-                      <div className="bg-[#182229]/90 rounded-[7px] px-3 py-1.5 flex items-center gap-1.5 backdrop-blur-sm">
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
-                          <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
-                        </svg>
-                        <span className="text-[11px] text-[#8696a0] leading-tight text-center">
-                          As mensagens são protegidas com a criptografia de ponta a ponta.
-                        </span>
-                      </div>
-                    </div>
+                   {/* Chat area */}
+                   <div
+                     className="flex-1 px-2.5 py-3 min-h-[380px] max-h-[380px] flex flex-col relative overflow-y-auto"
+                     style={{
+                       backgroundImage: `url(${waChatBg})`,
+                       backgroundSize: "cover",
+                       backgroundPosition: "center",
+                     }}
+                   >
+                     <div className="flex-1" />
 
-                    <div className="flex justify-center mb-3">
-                      <span className="bg-[#182229]/90 text-[#8696a0] text-[11.5px] px-3 py-[5px] rounded-[7px] font-medium backdrop-blur-sm">
-                        HOJE
-                      </span>
-                    </div>
+                     {/* Encryption notice */}
+                     <div className="flex justify-center mb-3">
+                       <div className="bg-[#182229]/90 rounded-[7px] px-3 py-1.5 flex items-center gap-1.5 backdrop-blur-sm">
+                         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
+                           <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
+                         </svg>
+                         <span className="text-[11px] text-[#8696a0] leading-tight text-center">
+                           As mensagens são protegidas com a criptografia de ponta a ponta.
+                         </span>
+                       </div>
+                     </div>
 
-                    {/* Template message card — like real WhatsApp */}
-                    <div className="max-w-[88%] self-start mb-1">
-                      <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
-                        {/* Tail */}
-                        <div className="absolute -left-2 top-0">
-                          <svg width="9" height="14" viewBox="0 0 9 14">
-                            <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
-                          </svg>
-                        </div>
+                     <div className="flex justify-center mb-3">
+                       <span className="bg-[#182229]/90 text-[#8696a0] text-[11.5px] px-3 py-[5px] rounded-[7px] font-medium backdrop-blur-sm">
+                         HOJE
+                       </span>
+                     </div>
 
-                        {/* Image header — Brevya logo banner */}
-                        <div className="bg-[#111b21] flex items-center justify-center py-5 px-4">
-                          <img src={brevyaAvatar} alt="Brevya" className="w-16 h-16 rounded-full" />
-                        </div>
+                     {/* Template message card */}
+                     <div className="max-w-[88%] self-start mb-1">
+                       <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                         <div className="absolute -left-2 top-0">
+                           <svg width="9" height="14" viewBox="0 0 9 14">
+                             <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
+                           </svg>
+                         </div>
+                         <div className="bg-[#111b21] flex items-center justify-center py-5 px-4">
+                           <img src={brevyaAvatar} alt="Brevya" className="w-16 h-16 rounded-full" />
+                         </div>
+                         <div className="px-2.5 py-2">
+                           <p className="text-[#e9edef] text-[14.2px] font-medium leading-[19px]">
+                             Brevya • Fale Conosco
+                           </p>
+                           <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-1">
+                             Olá! 👋 Bem-vindo à Brevya.
+                           </p>
+                           <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
+                             Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
+                           </p>
+                           <p className="text-[13px] text-[#8696a0] leading-[17px] mt-1">
+                             Toque em "Preencher dados" e fale com nosso time pelo WhatsApp.
+                           </p>
+                           <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
+                             <span className="text-[11px] text-[#ffffff99]">9:41</span>
+                             <CheckCheck size={16} className="text-[#53bdeb]" />
+                           </div>
+                         </div>
+                         <div className="border-t border-[#8696a0]/20">
+                           <button
+                             onClick={() => setScreen("flow")}
+                             className="w-full py-[8px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
+                           >
+                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                               <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
+                               <path d="M5 6h6M5 8.5h6M5 11h3" stroke="#53bdeb" strokeWidth="1" strokeLinecap="round" />
+                             </svg>
+                             Preencher dados
+                           </button>
+                         </div>
+                       </div>
+                     </div>
 
-                        {/* Card body */}
-                        <div className="px-2.5 py-2">
-                          <p className="text-[#e9edef] text-[14.2px] font-medium leading-[19px]">
-                            Brevya • Fale Conosco
-                          </p>
-                          <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-1">
-                            Olá! 👋 Bem-vindo à Brevya.
-                          </p>
-                          <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
-                            Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
-                          </p>
-                          <p className="text-[13px] text-[#8696a0] leading-[17px] mt-1">
-                            Toque em "Preencher dados" e fale com nosso time pelo WhatsApp.
-                          </p>
-                          <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
-                            <span className="text-[11px] text-[#ffffff99]">9:41</span>
-                            <CheckCheck size={16} className="text-[#53bdeb]" />
-                          </div>
-                        </div>
+                     {/* User messages */}
+                     {messages.map((msg, i) => (
+                       <div key={i} className={`max-w-[75%] mb-1 ${msg.from === "user" ? "self-end" : "self-start"}`}>
+                         <div className={`rounded-[7.5px] px-2.5 py-1.5 relative shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] ${msg.from === "user" ? "bg-[#005c4b] rounded-tr-0" : "bg-[#202c33] rounded-tl-0"}`}>
+                           <p className="text-[#e9edef] text-[14.2px] leading-[19px] pr-12">{msg.text}</p>
+                           <div className="flex items-center justify-end gap-1 -mt-1 -mb-0.5">
+                             <span className="text-[11px] text-[#ffffff99]">{msg.time}</span>
+                             {msg.from === "user" && <CheckCheck size={16} className="text-[#53bdeb]" />}
+                           </div>
+                         </div>
+                       </div>
+                     ))}
+                     <div ref={chatEndRef} />
+                   </div>
 
-                        {/* Template button */}
-                        <div className="border-t border-[#8696a0]/20">
-                          <button
-                            onClick={() => setScreen("flow")}
-                            className="w-full py-[8px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
-                          >
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                              <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
-                              <path d="M5 6h6M5 8.5h6M5 11h3" stroke="#53bdeb" strokeWidth="1" strokeLinecap="round" />
-                            </svg>
-                            Preencher dados
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom input bar — WhatsApp style: + | input(emoji...sticker camera) | mic */}
-                  <div className="bg-[#0b141a] px-[6px] py-[5px] flex items-end gap-[5px]">
-                    {/* Plus button */}
-                    <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="2" strokeLinecap="round">
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
-                    </div>
-                    {/* Input field */}
-                    <div className="flex-1 bg-[#2a3942] rounded-[21px] px-3 py-[7px] flex items-center gap-2 min-h-[42px]">
-                      <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
-                      {/* Sticker icon */}
-                      <Smile size={22} className="text-[#8696a0] shrink-0" />
-                      <Camera size={22} className="text-[#8696a0] shrink-0" />
+                   {/* Bottom input bar */}
+                   <div className="bg-[#0b141a] px-[6px] py-[5px] relative">
+                     {/* Emoji picker */}
+                     {showEmojiPicker && (
+                       <div className="absolute bottom-full left-0 right-0 bg-[#0b141a] border-t border-[#2a3942] p-2 grid grid-cols-5 gap-1 max-h-[140px] overflow-y-auto">
+                         {EMOJIS.map((emoji) => (
+                           <button
+                             key={emoji}
+                             onClick={() => setInputMsg(prev => prev + emoji)}
+                             className="text-[22px] p-1 hover:bg-[#2a3942] rounded transition-colors"
+                           >
+                             {emoji}
+                           </button>
+                         ))}
+                       </div>
+                     )}
+                     <div className="flex items-end gap-[5px]">
+                       <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="2" strokeLinecap="round">
+                           <line x1="12" y1="5" x2="12" y2="19" />
+                           <line x1="5" y1="12" x2="19" y2="12" />
+                         </svg>
+                       </div>
+                       <div className="flex-1 bg-[#2a3942] rounded-[21px] px-3 py-[7px] flex items-center gap-2 min-h-[42px]">
+                         <button onClick={() => setShowEmojiPicker(p => !p)} className="shrink-0">
+                           <Smile size={22} className={`${showEmojiPicker ? 'text-[#00a884]' : 'text-[#8696a0]'} transition-colors`} />
+                         </button>
+                         <input
+                           type="text"
+                           value={inputMsg}
+                           onChange={(e) => setInputMsg(e.target.value)}
+                           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                           placeholder="Mensagem"
+                           className="flex-1 bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#8696a0]"
+                         />
+                         <Camera size={22} className="text-[#8696a0] shrink-0" />
                     </div>
                     {/* Mic button */}
                     <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
