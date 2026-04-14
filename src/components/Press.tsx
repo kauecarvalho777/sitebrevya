@@ -37,8 +37,8 @@ const outlets = [
   { name: "Terra", logo: logoTerra, lightInvert: false, url: "https://www.terra.com.br/byte/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio,7337855ab61185ead300ab74da52e64f4mnp6qnv.html" },
   { name: "Jovem Pan", logo: logoJovemPan, lightInvert: false, url: "https://jovempan.com.br/edicase/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio.html" },
   { name: "SEGS", logo: logoSegs, lightInvert: false, skipBrightness: true, url: "https://www.segs.com.br/seguros/444474-e-commerce-dentro-do-whatsapp-propoe-nova-logica-para-o-comercio-digital" },
-  { name: "Portal Da Mídia", logo: logoPortalDaMidia, lightInvert: false, url: "https://portaldamidia.com.br/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
-  { name: "GZH", logo: null, lightInvert: false, url: "https://gauchazh.clicrbs.com.br/economia/noticia/2026/04/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-cmnt2bhyx022z013of52889w8.html" },
+  { name: "Portal Da Mídia", logo: logoPortalDaMidia, lightInvert: false, logoSize: "max-h-12", url: "https://portaldamidia.com.br/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
+  { name: "GZH", logo: null, lightInvert: false, textSize: "text-lg", url: "https://gauchazh.clicrbs.com.br/economia/noticia/2026/04/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-cmnt2bhyx022z013of52889w8.html" },
   { name: "TNH1", logo: logoTNH1, lightInvert: false, url: "https://www.tnh1.com.br/amp/nid/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-6571/" },
   { name: "A Cidade ON", logo: logoACidadeOn, lightInvert: true, url: "https://acidadeon.com/tudoep/tudo-inovacao/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio/" },
   { name: "Portaledicase", logo: logoEdicase, lightInvert: false, url: "https://portaledicase.com/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio/" },
@@ -46,7 +46,7 @@ const outlets = [
   { name: "Opinião RH", logo: logoOpiniaoRH, lightInvert: false, url: "https://opiniaorh.com/2026/04/10/quando-a-tecnologia-deixa-de-resolver-problemas-para-comecar-a-criar-possibilidades/" },
   { name: "Foco nos Negócios", logo: logoFocoNosNegocios, lightInvert: false, url: "https://www.foconosnegocios.com.br/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
   { name: "Tudo Notícias", logo: logoTudoNoticias, lightInvert: false, url: "https://tudonoticias.online/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
-  { name: "A Gazeta", logo: logoAGazetaMG, lightInvert: false, url: "https://agazetamg.com/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
+  { name: "A Gazeta", logo: logoAGazetaMG, lightInvert: false, logoSize: "max-h-12", url: "https://agazetamg.com/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
   { name: "Diário Paulista", logo: logoDiarioPaulista, lightInvert: false, url: "https://diariopaulista.com/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
 ];
 
