@@ -271,23 +271,6 @@ const Contact = () => {
                               {/* Outlined inputs — fieldset/floating label style */}
                               <div className="space-y-4 flex-1">
                                 <div className="relative">
-                                  <div className={`rounded-lg border ${errors.name ? 'border-[#ea4335]' : form.name ? 'border-[#3b4a54]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
-                                    <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
-                                      Nome completo
-                                    </label>
-                                    <input
-                                      type="text"
-                                      value={form.name}
-                                      onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
-                                      maxLength={100}
-                                      className="w-full bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#3b4a54]"
-                                      placeholder="Seu nome"
-                                    />
-                                  </div>
-                                  {errors.name && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.name}</p>}
-                                </div>
-
-                                <div className="relative">
                                   <div className={`rounded-lg border ${errors.phone ? 'border-[#ea4335]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
                                     <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
                                       Telefone
@@ -302,23 +285,6 @@ const Contact = () => {
                                     />
                                   </div>
                                   {errors.phone && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.phone}</p>}
-                                </div>
-
-                                <div className="relative">
-                                  <div className={`rounded-lg border ${errors.email ? 'border-[#ea4335]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
-                                    <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
-                                      E-mail
-                                    </label>
-                                    <input
-                                      type="email"
-                                      value={form.email}
-                                      onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
-                                      maxLength={255}
-                                      className="w-full bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#3b4a54]"
-                                      placeholder="seu@email.com"
-                                    />
-                                  </div>
-                                  {errors.email && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.email}</p>}
                                 </div>
                               </div>
                             </div>
@@ -342,22 +308,17 @@ const Contact = () => {
                             <div className="w-16 h-16 rounded-full bg-[#00a884]/20 flex items-center justify-center mb-4">
                               <CheckCheck size={32} className="text-[#00a884]" />
                             </div>
-                            <p className="text-[#e9edef] font-semibold text-lg">Dados enviados!</p>
+                            <p className="text-[#e9edef] font-semibold text-lg">Obrigado pelo seu interesse! 🎉</p>
                             <p className="text-[#8696a0] text-[14px] mt-2 max-w-[240px] leading-relaxed">
-                              Sua conversa foi aberta no WhatsApp. Nossa equipe responderá em breve! 🚀
+                              Dê uma olhada em seu WhatsApp — sua conversa com a Brevya já está aberta por lá!
                             </p>
                             <button
-                              onClick={() => { setScreen("chat"); setForm({ name: "", phone: "", email: "" }); }}
+                              onClick={() => { setScreen("chat"); setForm({ phone: "" }); }}
                               className="mt-6 text-[#00a884] text-[14px] font-medium hover:underline"
                             >
                               Voltar ao início
                             </button>
                           </div>
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
               </div>
             </div>
           </FadeIn>
