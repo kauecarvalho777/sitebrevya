@@ -4,6 +4,7 @@ import { User } from "lucide-react";
 import kaueImg from "@/assets/kaue-carvalho.png";
 import yanImg from "@/assets/yan-laurentino.png";
 import joaoImg from "@/assets/joao-victor.png";
+import marcosImg from "@/assets/marcos-smeets.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -22,7 +23,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const team = [
   { name: "Kauê Carvalho", role: "COO", image: kaueImg },
-  { name: "Marcos Smeets", role: "Software Engineer", image: null },
+  { name: "Marcos Smeets", role: "Software Engineer", image: marcosImg },
   { name: "João Victor", role: "Data Analyst", image: joaoImg },
   { name: "Yan Laurentino", role: "Vídeo Maker", image: yanImg },
 ];
