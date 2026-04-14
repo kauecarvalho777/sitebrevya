@@ -319,8 +319,14 @@ const Contact = () => {
                               Voltar ao início
                             </button>
                           </div>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
+          </FadeIn>
           </FadeIn>
         </div>
       </div>
