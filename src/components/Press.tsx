@@ -90,14 +90,14 @@ const Press = () => {
                   <img
                     src={outlet.logo}
                     alt={outlet.name}
-                    className={`max-h-8 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${
+                    className={`${(outlet as any).logoSize || "max-h-8"} w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${
                       (outlet as any).skipBrightness
                         ? ""
                         : "brightness-0 dark:brightness-0 dark:invert group-hover:brightness-100 dark:group-hover:brightness-100 dark:group-hover:invert-0"
                     }`}
                   />
                 ) : (
-                  <span className="text-sm font-bold text-foreground/60 group-hover:text-foreground/100 whitespace-nowrap transition-colors">
+                  <span className={`${(outlet as any).textSize || "text-sm"} font-bold text-foreground/60 group-hover:text-foreground/100 whitespace-nowrap transition-colors`}>
                     {outlet.name}
                   </span>
                 )}
