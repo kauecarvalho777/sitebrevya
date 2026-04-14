@@ -19,6 +19,9 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const WHATSAPP_NUMBER = "551153041000";
 
+/* WhatsApp doodle pattern as inline SVG for the chat wallpaper */
+const WA_DOODLE_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cpattern id='p' width='50' height='50' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10l3 3m5-8l2 4m8 2l-3 3m-2 8l4 2m8-5l3-3m-8-2l2-4' stroke='%23131d25' stroke-width='0.8' fill='none' opacity='0.7'/%3E%3Ccircle cx='25' cy='25' r='1' fill='%23131d25' opacity='0.5'/%3E%3Cpath d='M35 5l2 2M5 35l2 2M45 25l-2 2M20 45l2-2' stroke='%23131d25' stroke-width='0.6' fill='none' opacity='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='300' height='300' fill='%23%23060d13'/%3E%3Crect width='300' height='300' fill='url(%23p)'/%3E%3C/svg%3E")`;
+
 const Contact = () => {
   const [screen, setScreen] = useState<"chat" | "flow" | "done">("chat");
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -76,26 +79,23 @@ const Contact = () => {
           <FadeIn delay={0.15}>
             <div className="flex justify-center">
               {/* Phone frame */}
-              <div className="w-[300px] md:w-[340px] rounded-[2.5rem] border-[6px] border-[#2a2a2e] bg-[#0b141a] shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative">
+              <div className="w-[300px] md:w-[340px] rounded-[2.5rem] border-[6px] border-[#2a2a2e] bg-black shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative">
                 {/* Notch / Dynamic Island */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[22px] bg-[#0b141a] rounded-b-2xl z-20" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[22px] bg-black rounded-b-2xl z-20" />
 
                 {/* Status bar */}
-                <div className="h-[44px] bg-[#0b141a] flex items-end justify-between px-6 pb-1.5 text-[11px] text-white/80 font-medium z-10 relative">
+                <div className="h-[44px] bg-[#202c33] flex items-end justify-between px-6 pb-1.5 text-[11px] text-white/80 font-medium z-10 relative">
                   <span>9:41</span>
                   <div className="flex items-center gap-1.5">
-                    {/* Signal */}
                     <svg width="16" height="12" viewBox="0 0 16 12" fill="white" opacity="0.8">
                       <rect x="0" y="8" width="3" height="4" rx="0.5" />
                       <rect x="4.5" y="5" width="3" height="7" rx="0.5" />
                       <rect x="9" y="2" width="3" height="10" rx="0.5" />
                       <rect x="13.5" y="0" width="3" height="12" rx="0.5" opacity="0.3" />
                     </svg>
-                    {/* WiFi */}
                     <svg width="14" height="11" viewBox="0 0 14 11" fill="white" opacity="0.8">
                       <path d="M7 9.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM3.05 7.36a5.5 5.5 0 017.9 0l-.94.94a4 4 0 00-6.02 0l-.94-.94zM.93 5.24a8.5 8.5 0 0112.14 0l-.94.94a7 7 0 00-10.26 0L.93 5.24z" />
                     </svg>
-                    {/* Battery */}
                     <div className="flex items-center gap-0.5">
                       <div className="w-[22px] h-[10px] border border-white/60 rounded-[2px] relative p-[1px]">
                         <div className="h-full w-[70%] bg-white/80 rounded-[1px]" />
@@ -114,30 +114,34 @@ const Contact = () => {
                       transition={{ duration: 0.2 }}
                       className="flex flex-col"
                     >
-                      {/* WhatsApp header */}
-                      <div className="bg-[#1f2c34] px-2 py-1.5 flex items-center gap-2">
+                      {/* WhatsApp header — exact #202c33 */}
+                      <div className="bg-[#202c33] px-2 py-1.5 flex items-center gap-2">
                         <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
-                        <div className="w-[34px] h-[34px] rounded-full bg-[#2a3942] flex items-center justify-center shrink-0 overflow-hidden">
-                          <div className="w-full h-full rounded-full bg-primary/40 flex items-center justify-center text-primary font-bold text-[11px]">B</div>
+                        <div className="w-[34px] h-[34px] rounded-full bg-[#6b7b85] flex items-center justify-center shrink-0 overflow-hidden">
+                          <span className="text-white font-bold text-[13px]">B</span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-[15px] font-normal leading-tight truncate">Brevya</p>
-                          <p className="text-[12px] text-white/60 leading-tight">online</p>
+                          <p className="text-[#e9edef] text-[16px] font-normal leading-tight truncate">Brevya</p>
+                          <p className="text-[13px] text-[#00a884] leading-tight">online</p>
                         </div>
-                        <div className="flex items-center gap-4 text-white/70">
-                          <Phone size={18} />
-                          <MoreVertical size={18} />
+                        <div className="flex items-center gap-5 text-[#aebac1]">
+                          <Phone size={19} />
+                          <MoreVertical size={19} />
                         </div>
                       </div>
 
-                      {/* Chat area */}
+                      {/* Chat area — WhatsApp dark wallpaper #0b141a with doodle */}
                       <div
-                        className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end"
-                        style={{ backgroundColor: "#0b141a" }}
+                        className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end relative"
+                        style={{
+                          backgroundColor: "#0b141a",
+                          backgroundImage: WA_DOODLE_BG,
+                          backgroundSize: "300px 300px",
+                        }}
                       >
                         {/* Encryption notice */}
                         <div className="flex justify-center mb-3">
-                          <div className="bg-[#182229] rounded-lg px-3 py-1.5 flex items-center gap-1.5">
+                          <div className="bg-[#182229]/90 rounded-[7px] px-3 py-1.5 flex items-center gap-1.5 backdrop-blur-sm">
                             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
                               <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
                             </svg>
@@ -149,53 +153,54 @@ const Contact = () => {
 
                         {/* Date chip */}
                         <div className="flex justify-center mb-3">
-                          <span className="bg-[#182229] text-[#8696a0] text-[11px] px-3 py-1 rounded-lg font-medium">
+                          <span className="bg-[#182229]/90 text-[#8696a0] text-[11.5px] px-3 py-[5px] rounded-[7px] font-medium backdrop-blur-sm">
                             HOJE
                           </span>
                         </div>
 
-                        {/* Incoming message bubble */}
-                        <div className="max-w-[88%] self-start mb-1.5">
-                          <div className="bg-[#1f2c34] rounded-[10px] rounded-tl-[3px] px-2.5 py-1.5 shadow-sm relative">
-                            {/* Tail */}
-                            <div className="absolute -left-[6px] top-0 w-0 h-0 border-t-[8px] border-t-[#1f2c34] border-l-[8px] border-l-transparent" />
+                        {/* Incoming message bubble — exact #202c33 */}
+                        <div className="max-w-[88%] self-start mb-1">
+                          <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 px-2 py-1.5 shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                            {/* Message tail */}
+                            <div className="absolute -left-2 top-0">
+                              <svg width="9" height="14" viewBox="0 0 9 14">
+                                <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
+                              </svg>
+                            </div>
                             <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
                               Olá! 👋 Bem-vindo à <span className="font-medium">Brevya</span>.
                             </p>
-                            <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-1">
+                            <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
                               Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
                             </p>
                             <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
-                              <span className="text-[11px] text-[#8696a0]">9:41</span>
-                              <CheckCheck size={15} className="text-[#53bdeb]" />
+                              <span className="text-[11px] text-[#ffffff99]">9:41</span>
+                              <CheckCheck size={16} className="text-[#53bdeb]" />
                             </div>
                           </div>
                         </div>
 
-                        {/* Template card with button */}
+                        {/* Second message with template button */}
                         <div className="max-w-[88%] self-start">
-                          <div className="bg-[#1f2c34] rounded-[10px] rounded-tl-[3px] overflow-hidden shadow-sm">
-                            {/* Template content */}
-                            <div className="px-2.5 py-1.5">
+                          <div className="bg-[#202c33] rounded-[7.5px] overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)]">
+                            <div className="px-2 py-1.5">
                               <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
                                 Quer falar com nosso time? Preencha seus dados clicando no botão abaixo 👇
                               </p>
                               <div className="flex items-center justify-end gap-1 mt-0.5">
-                                <span className="text-[11px] text-[#8696a0]">9:41</span>
-                                <CheckCheck size={15} className="text-[#53bdeb]" />
+                                <span className="text-[11px] text-[#ffffff99]">9:41</span>
+                                <CheckCheck size={16} className="text-[#53bdeb]" />
                               </div>
                             </div>
-                            {/* Template button */}
-                            <div className="border-t border-[#8696a0]/15">
+                            {/* Template quick reply button — separated by thin line */}
+                            <div className="border-t border-[#8696a0]/20">
                               <button
                                 onClick={() => setScreen("flow")}
-                                className="w-full py-2.5 flex items-center justify-center gap-2 text-[#53bdeb] text-[14px] font-normal hover:bg-white/5 transition-colors"
+                                className="w-full py-[7px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
                               >
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                  <line x1="9" y1="9" x2="15" y2="9" />
-                                  <line x1="9" y1="13" x2="15" y2="13" />
-                                  <line x1="9" y1="17" x2="12" y2="17" />
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                  <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
+                                  <path d="M5 6h6M5 8.5h6M5 11h3" stroke="#53bdeb" strokeWidth="1" strokeLinecap="round" />
                                 </svg>
                                 Preencher dados
                               </button>
@@ -204,16 +209,17 @@ const Contact = () => {
                         </div>
                       </div>
 
-                      {/* Message input bar */}
-                      <div className="bg-[#0b141a] px-2 py-1.5 flex items-end gap-1.5">
-                        <div className="flex-1 bg-[#1f2c34] rounded-full px-3 py-2 flex items-center gap-2">
-                          <Smile size={22} className="text-[#8696a0] shrink-0" />
+                      {/* Bottom input bar — exact #202c33 */}
+                      <div className="bg-[#0b141a] px-[6px] py-[5px] flex items-end gap-[5px]">
+                        <div className="flex-1 bg-[#2a3942] rounded-[21px] px-2 py-[7px] flex items-center gap-1.5 min-h-[42px]">
+                          <Smile size={24} className="text-[#8696a0] shrink-0" />
                           <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
-                          <Paperclip size={20} className="text-[#8696a0] shrink-0 rotate-45" />
-                          <Camera size={20} className="text-[#8696a0] shrink-0" />
+                          <Paperclip size={22} className="text-[#8696a0] shrink-0 rotate-[135deg]" />
+                          <span className="text-[#8696a0] text-lg mx-0.5">₹</span>
+                          <Camera size={22} className="text-[#8696a0] shrink-0" />
                         </div>
                         <div className="w-[42px] h-[42px] rounded-full bg-[#00a884] flex items-center justify-center shrink-0">
-                          <Mic size={20} className="text-white" />
+                          <Mic size={22} className="text-[#0b141a]" />
                         </div>
                       </div>
                     </motion.div>
@@ -228,8 +234,8 @@ const Contact = () => {
                       transition={{ type: "spring", damping: 28, stiffness: 300 }}
                       className="flex flex-col"
                     >
-                      {/* Flow header - green bar like real WA Flows */}
-                      <div className="bg-[#00a884] px-3 py-2.5 flex items-center gap-3">
+                      {/* Flow header — WhatsApp green */}
+                      <div className="bg-[#00a884] px-3 py-3 flex items-center gap-3">
                         <button onClick={() => setScreen("chat")} className="text-white">
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18" />
@@ -237,23 +243,22 @@ const Contact = () => {
                           </svg>
                         </button>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-[16px] font-medium">Brevya</p>
+                          <p className="text-white text-[17px] font-medium">Brevya</p>
                         </div>
                       </div>
 
-                      {/* Flow title bar */}
-                      <div className="bg-[#111b21] px-4 py-3 border-b border-[#8696a0]/10">
-                        <p className="text-white text-[16px] font-semibold">Fale com a gente</p>
-                        <p className="text-[#8696a0] text-[13px] mt-0.5">Preencha seus dados abaixo</p>
+                      {/* Flow content area */}
+                      <div className="bg-[#111b21] px-4 pt-5 pb-3 border-b border-[#2a3942]">
+                        <p className="text-[#e9edef] text-[17px] font-semibold">Fale com a gente</p>
+                        <p className="text-[#8696a0] text-[14px] mt-1">Preencha seus dados para que possamos entrar em contato.</p>
                       </div>
 
-                      {/* Flow form body */}
-                      <div className="bg-[#111b21] px-4 py-4 min-h-[330px] flex flex-col">
+                      {/* Form body */}
+                      <div className="bg-[#111b21] px-4 py-5 min-h-[295px] flex flex-col">
                         <div className="space-y-5 flex-1">
-                          {/* Name field */}
                           <div>
-                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
-                              Nome completo <span className="text-red-400">*</span>
+                            <label className="text-[#8696a0] text-[13px] mb-2 block">
+                              Nome completo <span className="text-[#ea4335]">*</span>
                             </label>
                             <input
                               type="text"
@@ -261,15 +266,14 @@ const Contact = () => {
                               onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
                               maxLength={100}
                               placeholder="Digite seu nome"
-                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
+                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
                             />
-                            {errors.name && <p className="text-[#ef4444] text-[12px] mt-1">{errors.name}</p>}
+                            {errors.name && <p className="text-[#ea4335] text-[12px] mt-1">{errors.name}</p>}
                           </div>
 
-                          {/* Phone field */}
                           <div>
-                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
-                              Telefone <span className="text-red-400">*</span>
+                            <label className="text-[#8696a0] text-[13px] mb-2 block">
+                              Telefone <span className="text-[#ea4335]">*</span>
                             </label>
                             <input
                               type="tel"
@@ -277,15 +281,14 @@ const Contact = () => {
                               onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
                               maxLength={20}
                               placeholder="(00) 00000-0000"
-                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
+                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
                             />
-                            {errors.phone && <p className="text-[#ef4444] text-[12px] mt-1">{errors.phone}</p>}
+                            {errors.phone && <p className="text-[#ea4335] text-[12px] mt-1">{errors.phone}</p>}
                           </div>
 
-                          {/* Email field */}
                           <div>
-                            <label className="text-[#8696a0] text-[13px] mb-1.5 block">
-                              E-mail <span className="text-red-400">*</span>
+                            <label className="text-[#8696a0] text-[13px] mb-2 block">
+                              E-mail <span className="text-[#ea4335]">*</span>
                             </label>
                             <input
                               type="email"
@@ -293,21 +296,21 @@ const Contact = () => {
                               onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
                               maxLength={255}
                               placeholder="seu@email.com"
-                              className="w-full bg-transparent border-b-2 border-[#2a3942] focus:border-[#00a884] px-0 py-2.5 text-[#e9edef] text-[15px] placeholder:text-[#8696a0]/50 focus:outline-none transition-colors"
+                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
                             />
-                            {errors.email && <p className="text-[#ef4444] text-[12px] mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-[#ea4335] text-[12px] mt-1">{errors.email}</p>}
                           </div>
                         </div>
 
-                        {/* Flow footer button */}
-                        <div className="mt-4 pt-3 border-t border-[#8696a0]/10">
+                        {/* Flow CTA */}
+                        <div className="mt-5">
                           <button
                             onClick={handleSubmit}
-                            className="w-full py-3.5 rounded-full bg-[#00a884] text-white font-semibold text-[15px] hover:bg-[#00976e] transition-all duration-200 active:scale-[0.98]"
+                            className="w-full py-[14px] rounded-full bg-[#00a884] text-white font-semibold text-[16px] hover:bg-[#06cf9c] transition-all duration-200 active:scale-[0.98]"
                           >
                             Continuar
                           </button>
-                          <p className="text-center text-[11px] text-[#8696a0] mt-2.5 flex items-center justify-center gap-1">
+                          <p className="text-center text-[11px] text-[#8696a0] mt-3 flex items-center justify-center gap-1">
                             <svg width="10" height="10" viewBox="0 0 16 16" fill="#8696a0">
                               <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" />
                             </svg>
@@ -326,13 +329,13 @@ const Contact = () => {
                       transition={{ duration: 0.3 }}
                       className="flex flex-col"
                     >
-                      <div className="bg-[#00a884] px-3 py-2.5 flex items-center gap-3">
+                      <div className="bg-[#00a884] px-3 py-3 flex items-center gap-3">
                         <div className="flex-1">
-                          <p className="text-white text-[16px] font-medium text-center">Brevya</p>
+                          <p className="text-white text-[17px] font-medium text-center">Brevya</p>
                         </div>
                       </div>
 
-                      <div className="bg-[#111b21] px-4 py-5 min-h-[385px] flex flex-col items-center justify-center text-center">
+                      <div className="bg-[#111b21] px-4 py-5 min-h-[420px] flex flex-col items-center justify-center text-center">
                         <div className="w-16 h-16 rounded-full bg-[#00a884]/20 flex items-center justify-center mb-4">
                           <CheckCheck size={32} className="text-[#00a884]" />
                         </div>
