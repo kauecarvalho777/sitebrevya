@@ -36,7 +36,7 @@ const outlets = [
   { name: "O Globo", logo: logoOGlobo, lightInvert: false, url: "https://oglobo.globo.com/patrocinado/pulse-brand/noticia/2026/04/01/empresa-brasileira-desenvolve-ecommerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital-1.ghtml" },
   { name: "Terra", logo: logoTerra, lightInvert: false, url: "https://www.terra.com.br/byte/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio,7337855ab61185ead300ab74da52e64f4mnp6qnv.html" },
   { name: "Jovem Pan", logo: logoJovemPan, lightInvert: false, url: "https://jovempan.com.br/edicase/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio.html" },
-  { name: "SEGS", logo: logoSegs, lightInvert: false, skipBrightness: true, url: "https://www.segs.com.br/seguros/444474-e-commerce-dentro-do-whatsapp-propoe-nova-logica-para-o-comercio-digital" },
+  { name: "SEGS", logo: logoSegs, lightInvert: false, skipBrightness: true, logoSize: "max-h-12", url: "https://www.segs.com.br/seguros/444474-e-commerce-dentro-do-whatsapp-propoe-nova-logica-para-o-comercio-digital" },
   { name: "Portal Da Mídia", logo: logoPortalDaMidia, lightInvert: false, logoSize: "max-h-12", url: "https://portaldamidia.com.br/empresa-brasileira-desenvolve-e-commerce-100-dentro-do-whatsapp-e-propoe-nova-logica-para-o-comercio-digital/" },
   { name: "GZH", logo: null, lightInvert: false, textSize: "text-lg", url: "https://gauchazh.clicrbs.com.br/economia/noticia/2026/04/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-cmnt2bhyx022z013of52889w8.html" },
   { name: "TNH1", logo: logoTNH1, lightInvert: false, url: "https://www.tnh1.com.br/amp/nid/uso-da-tecnologia-nas-empresas-evolui-e-impulsiona-novos-modelos-de-negocio-6571/" },
