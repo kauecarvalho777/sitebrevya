@@ -125,6 +125,15 @@ const Team = () => {
                 </FadeIn>
               ))}
             </div>
+            {canScrollRight && (
+              <button
+                onClick={() => scrollRef.current?.scrollBy({ left: 250, behavior: "smooth" })}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-10 h-10 rounded-full bg-primary/90 hover:bg-primary text-primary-foreground flex items-center justify-center shadow-lg transition-colors"
+                aria-label="Ver mais"
+              >
+                <ChevronRight size={22} />
+              </button>
+            )}
           </div>
         </div>
       </div>
