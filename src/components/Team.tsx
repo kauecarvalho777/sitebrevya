@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { User, ChevronRight } from "lucide-react";
+import { User, ChevronRight, ChevronLeft } from "lucide-react";
 import pabloImg from "@/assets/pablo.png";
 import kaueImg from "@/assets/kaue-carvalho.png";
 import yanImg from "@/assets/yan-laurentino.png";
@@ -33,11 +33,13 @@ const allMembers = [
 const Team = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
 
   const checkScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
     setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
+    setCanScrollLeft(scrollLeft > 10);
   };
 
   useEffect(() => {
@@ -101,6 +103,15 @@ const Team = () => {
           ))}
           {/* No spacer - last card naturally overflows past screen edge */}
         </div>
+        {canScrollLeft && (
+          <button
+            onClick={() => scrollRef.current?.scrollBy({ left: -250, behavior: "smooth" })}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary/90 hover:bg-primary text-primary-foreground flex items-center justify-center shadow-lg transition-colors"
+            aria-label="Voltar"
+          >
+            <ChevronLeft size={22} />
+          </button>
+        )}
         {canScrollRight && (
           <button
             onClick={() => scrollRef.current?.scrollBy({ left: 250, behavior: "smooth" })}
