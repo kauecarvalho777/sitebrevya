@@ -48,7 +48,7 @@ const Team = () => {
   }, []);
 
   return (
-    <section id="equipe" className="relative pt-8 lg:pt-12 pb-20 lg:pb-28 overflow-hidden">
+    <section id="equipe" className="relative pt-8 lg:pt-12 pb-20 lg:pb-28 overflow-visible">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <FadeIn>
           <div className="flex items-center gap-3 mb-2">
@@ -73,7 +73,7 @@ const Team = () => {
           {allMembers.map((member, i) => (
             <FadeIn key={member.name} delay={0.1 * i}>
               <motion.div
-                className="group relative flex-shrink-0 w-[200px] md:w-[220px]"
+                className="group relative flex-shrink-0 w-[220px] md:w-[260px]"
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
@@ -99,8 +99,7 @@ const Team = () => {
               </motion.div>
             </FadeIn>
           ))}
-          {/* Spacer to ensure last card overflows */}
-          <div className="flex-shrink-0 w-1" aria-hidden />
+          {/* No spacer - last card naturally overflows past screen edge */}
         </div>
         {canScrollRight && (
           <button
