@@ -24,22 +24,19 @@ const WHATSAPP_NUMBER = "551153041000";
 
 const Contact = () => {
   const [screen, setScreen] = useState<"chat" | "flow" | "done">("chat");
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
+  const [form, setForm] = useState({ phone: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "Campo obrigatório";
     if (!form.phone.trim()) e.phone = "Campo obrigatório";
-    if (!form.email.trim()) e.email = "Campo obrigatório";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "E-mail inválido";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const handleSubmit = () => {
     if (!validate()) return;
-    const text = `Olá! Meu nome é *${form.name}*.\n📞 ${form.phone}\n📧 ${form.email}\n\nGostaria de saber mais sobre as soluções da Brevya.`;
+    const text = `Olá! Meu telefone é ${form.phone}.\n\nGostaria de saber mais sobre as soluções da Brevya.`;
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
     setScreen("done");
