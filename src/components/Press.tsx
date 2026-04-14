@@ -116,7 +116,9 @@ const Press = () => {
               inovação proposta pela empresa.
             </p>
             <a
-              href="#"
+              href="https://www.google.com/search?q=Brevya&tbm=nws"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-6 text-primary text-sm font-semibold hover:text-gold-light transition-colors group"
             >
               Ver publicações sobre a Brevya{" "}
