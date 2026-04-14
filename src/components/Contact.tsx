@@ -50,7 +50,7 @@ const Contact = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-
+  const validate = () => {
     const e: Record<string, string> = {};
     if (!form.phone.trim()) e.phone = "Campo obrigatório";
     setErrors(e);
