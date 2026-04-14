@@ -150,43 +150,46 @@ const Contact = () => {
                       </span>
                     </div>
 
-                    {/* Incoming message bubble */}
+                    {/* Template message card — like real WhatsApp */}
                     <div className="max-w-[88%] self-start mb-1">
-                      <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 px-2 py-1.5 shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                      <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                        {/* Tail */}
                         <div className="absolute -left-2 top-0">
                           <svg width="9" height="14" viewBox="0 0 9 14">
                             <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
                           </svg>
                         </div>
-                        <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
-                          Olá! 👋 Bem-vindo à <span className="font-medium">Brevya</span>.
-                        </p>
-                        <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
-                          Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
-                        </p>
-                        <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
-                          <span className="text-[11px] text-[#ffffff99]">9:41</span>
-                          <CheckCheck size={16} className="text-[#53bdeb]" />
-                        </div>
-                      </div>
-                    </div>
 
-                    {/* Template message with button */}
-                    <div className="max-w-[88%] self-start">
-                      <div className="bg-[#202c33] rounded-[7.5px] overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)]">
-                        <div className="px-2 py-1.5">
-                          <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
-                            Quer falar com nosso time? Preencha seus dados clicando no botão abaixo 👇
+                        {/* Image header — Brevya logo banner */}
+                        <div className="bg-[#111b21] flex items-center justify-center py-5 px-4">
+                          <img src={brevyaAvatar} alt="Brevya" className="w-16 h-16 rounded-full" />
+                        </div>
+
+                        {/* Card body */}
+                        <div className="px-2.5 py-2">
+                          <p className="text-[#e9edef] text-[14.2px] font-medium leading-[19px]">
+                            Brevya • Fale Conosco
                           </p>
-                          <div className="flex items-center justify-end gap-1 mt-0.5">
+                          <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-1">
+                            Olá! 👋 Bem-vindo à Brevya.
+                          </p>
+                          <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
+                            Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
+                          </p>
+                          <p className="text-[13px] text-[#8696a0] leading-[17px] mt-1">
+                            Toque em "Preencher dados" e fale com nosso time pelo WhatsApp.
+                          </p>
+                          <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
                             <span className="text-[11px] text-[#ffffff99]">9:41</span>
                             <CheckCheck size={16} className="text-[#53bdeb]" />
                           </div>
                         </div>
+
+                        {/* Template button */}
                         <div className="border-t border-[#8696a0]/20">
                           <button
                             onClick={() => setScreen("flow")}
-                            className="w-full py-[7px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
+                            className="w-full py-[8px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
                           >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                               <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
@@ -199,16 +202,25 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Bottom input bar */}
+                  {/* Bottom input bar — WhatsApp style: + | input(emoji...sticker camera) | mic */}
                   <div className="bg-[#0b141a] px-[6px] py-[5px] flex items-end gap-[5px]">
-                    <div className="flex-1 bg-[#2a3942] rounded-[21px] px-2 py-[7px] flex items-center gap-1.5 min-h-[42px]">
-                      <Smile size={24} className="text-[#8696a0] shrink-0" />
+                    {/* Plus button */}
+                    <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="2" strokeLinecap="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </div>
+                    {/* Input field */}
+                    <div className="flex-1 bg-[#2a3942] rounded-[21px] px-3 py-[7px] flex items-center gap-2 min-h-[42px]">
                       <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
-                      <Paperclip size={22} className="text-[#8696a0] shrink-0 rotate-[135deg]" />
+                      {/* Sticker icon */}
+                      <Smile size={22} className="text-[#8696a0] shrink-0" />
                       <Camera size={22} className="text-[#8696a0] shrink-0" />
                     </div>
-                    <div className="w-[42px] h-[42px] rounded-full bg-[#00a884] flex items-center justify-center shrink-0">
-                      <Mic size={22} className="text-[#0b141a]" />
+                    {/* Mic button */}
+                    <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
+                      <Mic size={24} className="text-[#8696a0]" />
                     </div>
                   </div>
 
