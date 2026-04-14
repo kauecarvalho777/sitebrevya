@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { MessageSquare, CheckCheck, ChevronLeft, Phone, MoreVertical, Smile, Paperclip, Mic, Camera } from "lucide-react";
+import waChatBg from "@/assets/wa-chat-bg.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -19,8 +20,6 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 const WHATSAPP_NUMBER = "551153041000";
 
-/* WhatsApp doodle pattern as inline SVG for the chat wallpaper */
-const WA_DOODLE_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3Cpattern id='p' width='50' height='50' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10l3 3m5-8l2 4m8 2l-3 3m-2 8l4 2m8-5l3-3m-8-2l2-4' stroke='%23131d25' stroke-width='0.8' fill='none' opacity='0.7'/%3E%3Ccircle cx='25' cy='25' r='1' fill='%23131d25' opacity='0.5'/%3E%3Cpath d='M35 5l2 2M5 35l2 2M45 25l-2 2M20 45l2-2' stroke='%23131d25' stroke-width='0.6' fill='none' opacity='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='300' height='300' fill='%23%23060d13'/%3E%3Crect width='300' height='300' fill='url(%23p)'/%3E%3C/svg%3E")`;
 
 const Contact = () => {
   const [screen, setScreen] = useState<"chat" | "flow" | "done">("chat");
@@ -127,9 +126,9 @@ const Contact = () => {
                   <div
                     className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end relative"
                     style={{
-                      backgroundColor: "#0b141a",
-                      backgroundImage: WA_DOODLE_BG,
-                      backgroundSize: "300px 300px",
+                      backgroundImage: `url(${waChatBg})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
                     }}
                   >
                     {/* Encryption notice */}
