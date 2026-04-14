@@ -105,254 +105,238 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <AnimatePresence mode="wait">
-                  {screen === "chat" && (
-                    <motion.div
-                      key="chat"
-                      initial={{ opacity: 1 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.2 }}
-                      className="flex flex-col"
-                    >
-                      {/* WhatsApp header — exact #202c33 */}
-                      <div className="bg-[#202c33] px-2 py-1.5 flex items-center gap-2">
-                        <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
-                        <div className="w-[34px] h-[34px] rounded-full bg-[#6b7b85] flex items-center justify-center shrink-0 overflow-hidden">
-                          <span className="text-white font-bold text-[13px]">B</span>
+                {/* Chat is always rendered */}
+                <div className="flex flex-col relative">
+                  {/* WhatsApp header */}
+                  <div className="bg-[#202c33] px-2 py-1.5 flex items-center gap-2">
+                    <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
+                    <div className="w-[34px] h-[34px] rounded-full bg-[#6b7b85] flex items-center justify-center shrink-0 overflow-hidden">
+                      <span className="text-white font-bold text-[13px]">B</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[#e9edef] text-[16px] font-normal leading-tight truncate">Brevya</p>
+                      <p className="text-[13px] text-[#00a884] leading-tight">online</p>
+                    </div>
+                    <div className="flex items-center gap-5 text-[#aebac1]">
+                      <Phone size={19} />
+                      <MoreVertical size={19} />
+                    </div>
+                  </div>
+
+                  {/* Chat area */}
+                  <div
+                    className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end relative"
+                    style={{
+                      backgroundColor: "#0b141a",
+                      backgroundImage: WA_DOODLE_BG,
+                      backgroundSize: "300px 300px",
+                    }}
+                  >
+                    {/* Encryption notice */}
+                    <div className="flex justify-center mb-3">
+                      <div className="bg-[#182229]/90 rounded-[7px] px-3 py-1.5 flex items-center gap-1.5 backdrop-blur-sm">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
+                          <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
+                        </svg>
+                        <span className="text-[11px] text-[#8696a0] leading-tight text-center">
+                          As mensagens são protegidas com a criptografia de ponta a ponta.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center mb-3">
+                      <span className="bg-[#182229]/90 text-[#8696a0] text-[11.5px] px-3 py-[5px] rounded-[7px] font-medium backdrop-blur-sm">
+                        HOJE
+                      </span>
+                    </div>
+
+                    {/* Incoming message bubble */}
+                    <div className="max-w-[88%] self-start mb-1">
+                      <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 px-2 py-1.5 shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
+                        <div className="absolute -left-2 top-0">
+                          <svg width="9" height="14" viewBox="0 0 9 14">
+                            <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
+                          </svg>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[#e9edef] text-[16px] font-normal leading-tight truncate">Brevya</p>
-                          <p className="text-[13px] text-[#00a884] leading-tight">online</p>
-                        </div>
-                        <div className="flex items-center gap-5 text-[#aebac1]">
-                          <Phone size={19} />
-                          <MoreVertical size={19} />
+                        <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
+                          Olá! 👋 Bem-vindo à <span className="font-medium">Brevya</span>.
+                        </p>
+                        <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
+                          Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
+                        </p>
+                        <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
+                          <span className="text-[11px] text-[#ffffff99]">9:41</span>
+                          <CheckCheck size={16} className="text-[#53bdeb]" />
                         </div>
                       </div>
+                    </div>
 
-                      {/* Chat area — WhatsApp dark wallpaper #0b141a with doodle */}
-                      <div
-                        className="flex-1 px-2.5 py-3 min-h-[380px] flex flex-col justify-end relative"
-                        style={{
-                          backgroundColor: "#0b141a",
-                          backgroundImage: WA_DOODLE_BG,
-                          backgroundSize: "300px 300px",
-                        }}
-                      >
-                        {/* Encryption notice */}
-                        <div className="flex justify-center mb-3">
-                          <div className="bg-[#182229]/90 rounded-[7px] px-3 py-1.5 flex items-center gap-1.5 backdrop-blur-sm">
-                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0">
-                              <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" fill="#8696a0" opacity="0.6" />
+                    {/* Template message with button */}
+                    <div className="max-w-[88%] self-start">
+                      <div className="bg-[#202c33] rounded-[7.5px] overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)]">
+                        <div className="px-2 py-1.5">
+                          <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
+                            Quer falar com nosso time? Preencha seus dados clicando no botão abaixo 👇
+                          </p>
+                          <div className="flex items-center justify-end gap-1 mt-0.5">
+                            <span className="text-[11px] text-[#ffffff99]">9:41</span>
+                            <CheckCheck size={16} className="text-[#53bdeb]" />
+                          </div>
+                        </div>
+                        <div className="border-t border-[#8696a0]/20">
+                          <button
+                            onClick={() => setScreen("flow")}
+                            className="w-full py-[7px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
+                          >
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
+                              <path d="M5 6h6M5 8.5h6M5 11h3" stroke="#53bdeb" strokeWidth="1" strokeLinecap="round" />
                             </svg>
-                            <span className="text-[11px] text-[#8696a0] leading-tight text-center">
-                              As mensagens são protegidas com a criptografia de ponta a ponta.
-                            </span>
-                          </div>
+                            Preencher dados
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom input bar */}
+                  <div className="bg-[#0b141a] px-[6px] py-[5px] flex items-end gap-[5px]">
+                    <div className="flex-1 bg-[#2a3942] rounded-[21px] px-2 py-[7px] flex items-center gap-1.5 min-h-[42px]">
+                      <Smile size={24} className="text-[#8696a0] shrink-0" />
+                      <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
+                      <Paperclip size={22} className="text-[#8696a0] shrink-0 rotate-[135deg]" />
+                      <Camera size={22} className="text-[#8696a0] shrink-0" />
+                    </div>
+                    <div className="w-[42px] h-[42px] rounded-full bg-[#00a884] flex items-center justify-center shrink-0">
+                      <Mic size={22} className="text-[#0b141a]" />
+                    </div>
+                  </div>
+
+                  {/* Flow overlay — slides up from bottom, leaves ~25px gap at top to show chat behind */}
+                  <AnimatePresence>
+                    {(screen === "flow" || screen === "done") && (
+                      <motion.div
+                        key="flow-overlay"
+                        initial={{ y: "100%" }}
+                        animate={{ y: 0 }}
+                        exit={{ y: "100%" }}
+                        transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                        className="absolute bottom-0 left-0 right-0 z-30 flex flex-col rounded-t-2xl overflow-hidden shadow-[0_-4px_20px_rgba(0,0,0,0.4)]"
+                        style={{ top: "60px" }}
+                      >
+                        {/* Drag handle */}
+                        <div className="bg-[#111b21] pt-2 pb-1 flex justify-center">
+                          <div className="w-9 h-[4px] rounded-full bg-[#8696a0]/40" />
                         </div>
 
-                        {/* Date chip */}
-                        <div className="flex justify-center mb-3">
-                          <span className="bg-[#182229]/90 text-[#8696a0] text-[11.5px] px-3 py-[5px] rounded-[7px] font-medium backdrop-blur-sm">
-                            HOJE
-                          </span>
-                        </div>
-
-                        {/* Incoming message bubble — exact #202c33 */}
-                        <div className="max-w-[88%] self-start mb-1">
-                          <div className="bg-[#202c33] rounded-[7.5px] rounded-tl-0 px-2 py-1.5 shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] relative">
-                            {/* Message tail */}
-                            <div className="absolute -left-2 top-0">
-                              <svg width="9" height="14" viewBox="0 0 9 14">
-                                <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
-                              </svg>
-                            </div>
-                            <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
-                              Olá! 👋 Bem-vindo à <span className="font-medium">Brevya</span>.
-                            </p>
-                            <p className="text-[14.2px] text-[#e9edef] leading-[19px] mt-0.5">
-                              Somos especialistas em automação e inteligência artificial para empresas que querem escalar resultados.
-                            </p>
-                            <div className="flex items-center justify-end gap-1 mt-0.5 -mb-0.5">
-                              <span className="text-[11px] text-[#ffffff99]">9:41</span>
-                              <CheckCheck size={16} className="text-[#53bdeb]" />
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Second message with template button */}
-                        <div className="max-w-[88%] self-start">
-                          <div className="bg-[#202c33] rounded-[7.5px] overflow-hidden shadow-[0_1px_0.5px_rgba(0,0,0,0.13)]">
-                            <div className="px-2 py-1.5">
-                              <p className="text-[14.2px] text-[#e9edef] leading-[19px]">
-                                Quer falar com nosso time? Preencha seus dados clicando no botão abaixo 👇
-                              </p>
-                              <div className="flex items-center justify-end gap-1 mt-0.5">
-                                <span className="text-[11px] text-[#ffffff99]">9:41</span>
-                                <CheckCheck size={16} className="text-[#53bdeb]" />
+                        {screen === "flow" ? (
+                          <>
+                            {/* Flow header */}
+                            <div className="bg-[#111b21] px-4 pt-1 pb-3 flex items-center gap-3 border-b border-[#2a3942]">
+                              <button onClick={() => setScreen("chat")} className="text-[#8696a0] hover:text-white transition-colors">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <line x1="18" y1="6" x2="6" y2="18" />
+                                  <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                              </button>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-[#e9edef] text-[16px] font-semibold">Fale com a gente</p>
+                              </div>
+                              <div className="w-6 h-6 rounded-full bg-[#00a884] flex items-center justify-center">
+                                <span className="text-white text-[10px] font-bold">B</span>
                               </div>
                             </div>
-                            {/* Template quick reply button — separated by thin line */}
-                            <div className="border-t border-[#8696a0]/20">
-                              <button
-                                onClick={() => setScreen("flow")}
-                                className="w-full py-[7px] flex items-center justify-center gap-1.5 text-[#53bdeb] text-[14px] font-normal hover:bg-[#ffffff08] transition-colors active:bg-[#ffffff10]"
-                              >
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                  <path d="M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="#53bdeb" strokeWidth="1.2" />
-                                  <path d="M5 6h6M5 8.5h6M5 11h3" stroke="#53bdeb" strokeWidth="1" strokeLinecap="round" />
-                                </svg>
-                                Preencher dados
-                              </button>
+
+                            {/* Flow form */}
+                            <div className="bg-[#111b21] px-4 py-4 flex-1 flex flex-col overflow-y-auto">
+                              <p className="text-[#8696a0] text-[13px] mb-4">Preencha seus dados para que possamos entrar em contato.</p>
+
+                              <div className="space-y-5 flex-1">
+                                <div>
+                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
+                                    Nome completo <span className="text-[#ea4335]">*</span>
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={form.name}
+                                    onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
+                                    maxLength={100}
+                                    placeholder="Digite seu nome"
+                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
+                                  />
+                                  {errors.name && <p className="text-[#ea4335] text-[12px] mt-1">{errors.name}</p>}
+                                </div>
+
+                                <div>
+                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
+                                    Telefone <span className="text-[#ea4335]">*</span>
+                                  </label>
+                                  <input
+                                    type="tel"
+                                    value={form.phone}
+                                    onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
+                                    maxLength={20}
+                                    placeholder="(00) 00000-0000"
+                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
+                                  />
+                                  {errors.phone && <p className="text-[#ea4335] text-[12px] mt-1">{errors.phone}</p>}
+                                </div>
+
+                                <div>
+                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
+                                    E-mail <span className="text-[#ea4335]">*</span>
+                                  </label>
+                                  <input
+                                    type="email"
+                                    value={form.email}
+                                    onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
+                                    maxLength={255}
+                                    placeholder="seu@email.com"
+                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
+                                  />
+                                  {errors.email && <p className="text-[#ea4335] text-[12px] mt-1">{errors.email}</p>}
+                                </div>
+                              </div>
+
+                              {/* Flow CTA */}
+                              <div className="mt-4 pt-2">
+                                <button
+                                  onClick={handleSubmit}
+                                  className="w-full py-[13px] rounded-full bg-[#00a884] text-white font-semibold text-[15px] hover:bg-[#06cf9c] transition-all duration-200 active:scale-[0.98]"
+                                >
+                                  Continuar
+                                </button>
+                                <p className="text-center text-[11px] text-[#8696a0] mt-2.5 flex items-center justify-center gap-1">
+                                  <svg width="10" height="10" viewBox="0 0 16 16" fill="#8696a0">
+                                    <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" />
+                                  </svg>
+                                  Dados protegidos pela Brevya
+                                </p>
+                              </div>
                             </div>
+                          </>
+                        ) : (
+                          /* Done screen */
+                          <div className="bg-[#111b21] px-4 py-5 flex-1 flex flex-col items-center justify-center text-center">
+                            <div className="w-16 h-16 rounded-full bg-[#00a884]/20 flex items-center justify-center mb-4">
+                              <CheckCheck size={32} className="text-[#00a884]" />
+                            </div>
+                            <p className="text-[#e9edef] font-semibold text-lg">Dados enviados!</p>
+                            <p className="text-[#8696a0] text-[14px] mt-2 max-w-[240px] leading-relaxed">
+                              Sua conversa foi aberta no WhatsApp. Nossa equipe responderá em breve! 🚀
+                            </p>
+                            <button
+                              onClick={() => { setScreen("chat"); setForm({ name: "", phone: "", email: "" }); }}
+                              className="mt-6 text-[#00a884] text-[14px] font-medium hover:underline"
+                            >
+                              Voltar ao início
+                            </button>
                           </div>
-                        </div>
-                      </div>
-
-                      {/* Bottom input bar — exact #202c33 */}
-                      <div className="bg-[#0b141a] px-[6px] py-[5px] flex items-end gap-[5px]">
-                        <div className="flex-1 bg-[#2a3942] rounded-[21px] px-2 py-[7px] flex items-center gap-1.5 min-h-[42px]">
-                          <Smile size={24} className="text-[#8696a0] shrink-0" />
-                          <span className="text-[15px] text-[#8696a0] flex-1">Mensagem</span>
-                          <Paperclip size={22} className="text-[#8696a0] shrink-0 rotate-[135deg]" />
-                          <span className="text-[#8696a0] text-lg mx-0.5">₹</span>
-                          <Camera size={22} className="text-[#8696a0] shrink-0" />
-                        </div>
-                        <div className="w-[42px] h-[42px] rounded-full bg-[#00a884] flex items-center justify-center shrink-0">
-                          <Mic size={22} className="text-[#0b141a]" />
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {screen === "flow" && (
-                    <motion.div
-                      key="flow"
-                      initial={{ y: "100%" }}
-                      animate={{ y: 0 }}
-                      exit={{ y: "100%" }}
-                      transition={{ type: "spring", damping: 28, stiffness: 300 }}
-                      className="flex flex-col"
-                    >
-                      {/* Flow header — WhatsApp green */}
-                      <div className="bg-[#00a884] px-3 py-3 flex items-center gap-3">
-                        <button onClick={() => setScreen("chat")} className="text-white">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                          </svg>
-                        </button>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white text-[17px] font-medium">Brevya</p>
-                        </div>
-                      </div>
-
-                      {/* Flow content area */}
-                      <div className="bg-[#111b21] px-4 pt-5 pb-3 border-b border-[#2a3942]">
-                        <p className="text-[#e9edef] text-[17px] font-semibold">Fale com a gente</p>
-                        <p className="text-[#8696a0] text-[14px] mt-1">Preencha seus dados para que possamos entrar em contato.</p>
-                      </div>
-
-                      {/* Form body */}
-                      <div className="bg-[#111b21] px-4 py-5 min-h-[295px] flex flex-col">
-                        <div className="space-y-5 flex-1">
-                          <div>
-                            <label className="text-[#8696a0] text-[13px] mb-2 block">
-                              Nome completo <span className="text-[#ea4335]">*</span>
-                            </label>
-                            <input
-                              type="text"
-                              value={form.name}
-                              onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
-                              maxLength={100}
-                              placeholder="Digite seu nome"
-                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                            />
-                            {errors.name && <p className="text-[#ea4335] text-[12px] mt-1">{errors.name}</p>}
-                          </div>
-
-                          <div>
-                            <label className="text-[#8696a0] text-[13px] mb-2 block">
-                              Telefone <span className="text-[#ea4335]">*</span>
-                            </label>
-                            <input
-                              type="tel"
-                              value={form.phone}
-                              onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
-                              maxLength={20}
-                              placeholder="(00) 00000-0000"
-                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                            />
-                            {errors.phone && <p className="text-[#ea4335] text-[12px] mt-1">{errors.phone}</p>}
-                          </div>
-
-                          <div>
-                            <label className="text-[#8696a0] text-[13px] mb-2 block">
-                              E-mail <span className="text-[#ea4335]">*</span>
-                            </label>
-                            <input
-                              type="email"
-                              value={form.email}
-                              onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
-                              maxLength={255}
-                              placeholder="seu@email.com"
-                              className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[16px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                            />
-                            {errors.email && <p className="text-[#ea4335] text-[12px] mt-1">{errors.email}</p>}
-                          </div>
-                        </div>
-
-                        {/* Flow CTA */}
-                        <div className="mt-5">
-                          <button
-                            onClick={handleSubmit}
-                            className="w-full py-[14px] rounded-full bg-[#00a884] text-white font-semibold text-[16px] hover:bg-[#06cf9c] transition-all duration-200 active:scale-[0.98]"
-                          >
-                            Continuar
-                          </button>
-                          <p className="text-center text-[11px] text-[#8696a0] mt-3 flex items-center justify-center gap-1">
-                            <svg width="10" height="10" viewBox="0 0 16 16" fill="#8696a0">
-                              <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" />
-                            </svg>
-                            Dados protegidos pela Brevya
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {screen === "done" && (
-                    <motion.div
-                      key="done"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex flex-col"
-                    >
-                      <div className="bg-[#00a884] px-3 py-3 flex items-center gap-3">
-                        <div className="flex-1">
-                          <p className="text-white text-[17px] font-medium text-center">Brevya</p>
-                        </div>
-                      </div>
-
-                      <div className="bg-[#111b21] px-4 py-5 min-h-[420px] flex flex-col items-center justify-center text-center">
-                        <div className="w-16 h-16 rounded-full bg-[#00a884]/20 flex items-center justify-center mb-4">
-                          <CheckCheck size={32} className="text-[#00a884]" />
-                        </div>
-                        <p className="text-[#e9edef] font-semibold text-lg">Dados enviados!</p>
-                        <p className="text-[#8696a0] text-[14px] mt-2 max-w-[240px] leading-relaxed">
-                          Sua conversa foi aberta no WhatsApp. Nossa equipe responderá em breve! 🚀
-                        </p>
-                        <button
-                          onClick={() => { setScreen("chat"); setForm({ name: "", phone: "", email: "" }); }}
-                          className="mt-6 text-[#00a884] text-[14px] font-medium hover:underline"
-                        >
-                          Voltar ao início
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
           </FadeIn>
