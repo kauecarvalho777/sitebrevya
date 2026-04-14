@@ -68,7 +68,7 @@ const Team = () => {
       <div className="relative">
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide pl-4 lg:pl-[max(2rem,calc((100vw-72rem)/2+2rem))]"
+          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide pl-4 lg:pl-[max(2rem,calc((100vw-72rem)/2+2rem))] pr-0"
         >
           {allMembers.map((member, i) => (
             <FadeIn key={member.name} delay={0.1 * i}>
