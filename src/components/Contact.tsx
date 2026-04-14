@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { MessageSquare, CheckCheck, ChevronLeft, Phone, MoreVertical, Smile, Paperclip, Mic, Camera } from "lucide-react";
 import waChatBg from "@/assets/wa-chat-bg.png";
 import brevyaAvatar from "@/assets/brevya-avatar.png";
+import brevyaRobot from "@/assets/brevya-robot.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
