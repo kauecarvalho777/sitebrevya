@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MessageSquare, Send, Check, CheckCheck } from "lucide-react";
+import { MessageSquare, Send, CheckCheck } from "lucide-react";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
