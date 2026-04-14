@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { MessageSquare, CheckCheck, ChevronLeft, Send, Phone, MoreVertical, Search, Smile, Paperclip, Mic, Camera } from "lucide-react";
+import { MessageSquare, CheckCheck, ChevronLeft, Phone, MoreVertical, Smile, Paperclip, Mic, Camera } from "lucide-react";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
