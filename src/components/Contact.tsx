@@ -327,7 +327,6 @@ const Contact = () => {
               </div>
             </div>
           </FadeIn>
-          </FadeIn>
         </div>
       </div>
     </section>
