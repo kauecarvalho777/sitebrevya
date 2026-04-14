@@ -25,6 +25,7 @@ const Index = () => {
       <Press />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
