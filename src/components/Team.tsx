@@ -30,7 +30,7 @@ const team = [
 
 const Team = () => {
   return (
-    <section id="equipe" className="relative py-20 lg:py-28">
+    <section id="equipe" className="relative pt-8 lg:pt-12 pb-20 lg:pb-28">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <FadeIn>
           <div className="flex items-center gap-3 mb-2">

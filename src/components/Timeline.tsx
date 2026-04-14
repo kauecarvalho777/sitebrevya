@@ -158,7 +158,7 @@ const Timeline = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-8 lg:pt-12 pb-20 lg:pb-28 overflow-hidden"
+      className="relative pt-8 lg:pt-12 pb-8 lg:pb-12 overflow-hidden"
     >
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl mb-12">
         <motion.div
