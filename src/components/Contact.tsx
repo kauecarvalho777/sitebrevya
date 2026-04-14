@@ -261,12 +261,19 @@ const Contact = () => {
                            className="flex-1 bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#8696a0]"
                          />
                          <Camera size={22} className="text-[#8696a0] shrink-0" />
-                    </div>
-                    {/* Mic button */}
-                    <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
-                      <Mic size={24} className="text-[#8696a0]" />
-                    </div>
-                  </div>
+                       </div>
+                       {/* Send or Mic button */}
+                       {inputMsg.trim() ? (
+                         <button onClick={sendMessage} className="w-[42px] h-[42px] flex items-center justify-center shrink-0 bg-[#00a884] rounded-full">
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /></svg>
+                         </button>
+                       ) : (
+                         <div className="w-[42px] h-[42px] flex items-center justify-center shrink-0">
+                           <Mic size={24} className="text-[#8696a0]" />
+                         </div>
+                       )}
+                     </div>
+                   </div>
 
                   {/* Flow overlay — slides up from bottom, leaves ~25px gap at top to show chat behind */}
                   <AnimatePresence>
