@@ -26,6 +26,25 @@ const Contact = () => {
   const [screen, setScreen] = useState<"chat" | "flow" | "done">("chat");
   const [form, setForm] = useState({ phone: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [messages, setMessages] = useState<{ text: string; time: string; from: "user" | "bot" }[]>([]);
+  const [inputMsg, setInputMsg] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  const EMOJIS = ["😀","😂","😍","🥰","😎","🤩","🙌","👏","🔥","💯","❤️","👍","🎉","✨","💪","🚀","😊","🤔","😅","🥳","💰","📈","🤝","⭐","💡"];
+
+  const getTime = () => {
+    const now = new Date();
+    return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+  };
+
+  const sendMessage = () => {
+    const text = inputMsg.trim();
+    if (!text) return;
+    setMessages(prev => [...prev, { text, time: getTime(), from: "user" }]);
+    setInputMsg("");
+    setShowEmojiPicker(false);
+  };
 
   const validate = () => {
     const e: Record<string, string> = {};
