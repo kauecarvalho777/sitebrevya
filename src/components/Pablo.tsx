@@ -97,9 +97,6 @@ const Pablo = () => {
                 <cite className="mt-2 block text-xs text-primary font-medium not-italic">
                   Pablo Rodrigues Nunes
                 </cite>
-                <cite className="mt-2 block text-xs text-primary font-medium not-italic">
-                  Pablo Rodrigues Nunes
-                </cite>
                 <div className="flex items-center gap-3 mt-3">
                   <a href="https://www.instagram.com/pablornv/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                     <Instagram size={18} />
@@ -111,6 +108,7 @@ const Pablo = () => {
                     <Github size={18} />
                   </a>
                 </div>
+              </motion.blockquote>
             </FadeIn>
           </div>
         </div>
