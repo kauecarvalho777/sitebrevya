@@ -188,7 +188,7 @@ const Timeline = () => {
           WebkitOverflowScrolling: "touch",
         }}
       >
-        <div className="flex gap-0 px-[max(1rem,calc((100vw-72rem)/2+1rem))]">
+        <div className="flex gap-6 px-[max(1rem,calc((100vw-72rem)/2+1rem))] items-stretch">
           {timelineData.map((item, i) => (
             <TimelineCard key={i} item={item} index={i} />
           ))}
