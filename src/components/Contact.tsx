@@ -46,7 +46,11 @@ const Contact = () => {
     setShowEmojiPicker(false);
   };
 
-  const validate = () => {
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
     const e: Record<string, string> = {};
     if (!form.phone.trim()) e.phone = "Campo obrigatório";
     setErrors(e);
