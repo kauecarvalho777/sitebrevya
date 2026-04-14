@@ -60,7 +60,9 @@ const Contact = () => {
 
   const handleSubmit = () => {
     if (!validate()) return;
-    // TODO: enviar mensagem via API do WhatsApp com form.phone
+    const phone = form.phone.replace(/\D/g, "");
+    const message = encodeURIComponent(`Olá! Meu número é ${form.phone}. Gostaria de saber mais sobre a Brevya.`);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
     setScreen("done");
   };
 
