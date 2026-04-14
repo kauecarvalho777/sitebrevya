@@ -72,7 +72,7 @@ const Press = () => {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="mt-12 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {outlets.map((outlet, i) => (
               <motion.a
                 key={outlet.name}
