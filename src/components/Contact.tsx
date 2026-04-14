@@ -2,6 +2,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { MessageSquare, CheckCheck, ChevronLeft, Phone, MoreVertical, Smile, Paperclip, Mic, Camera } from "lucide-react";
 import waChatBg from "@/assets/wa-chat-bg.png";
+import waChatBgLight from "@/assets/wa-chat-bg-light.png";
 import brevyaAvatar from "@/assets/brevya-avatar.png";
 import brevyaRobot from "@/assets/brevya-robot.png";
 
@@ -31,6 +32,15 @@ const Contact = () => {
   const [inputMsg, setInputMsg] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains("dark"));
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   const EMOJIS = ["😀","😂","😍","🥰","😎","🤩","🙌","👏","🔥","💯","❤️","👍","🎉","✨","💪","🚀","😊","🤔","😅","🥳","💰","📈","🤝","⭐","💡"];
 
@@ -153,7 +163,7 @@ const Contact = () => {
                    <div
                      className="flex-1 px-2.5 py-3 flex flex-col relative overflow-y-auto min-h-0 bg-[#efeae2] dark:bg-transparent"
                      style={{
-                       backgroundImage: `url(${waChatBg})`,
+                       backgroundImage: `url(${isDark ? waChatBg : waChatBgLight})`,
                        backgroundSize: "cover",
                        backgroundPosition: "center",
                      }}
