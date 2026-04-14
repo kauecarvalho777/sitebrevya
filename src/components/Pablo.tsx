@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Instagram, Linkedin, Github } from "lucide-react";
 import { Spotlight } from "@/components/ui/aceternity/spotlight";
 import pabloImg from "@/assets/pablo-portrait.jpg";
 
@@ -96,7 +97,20 @@ const Pablo = () => {
                 <cite className="mt-2 block text-xs text-primary font-medium not-italic">
                   Pablo Rodrigues Nunes
                 </cite>
-              </motion.blockquote>
+                <cite className="mt-2 block text-xs text-primary font-medium not-italic">
+                  Pablo Rodrigues Nunes
+                </cite>
+                <div className="flex items-center gap-3 mt-3">
+                  <a href="https://www.instagram.com/pablornv/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Instagram size={18} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/pablorodriguesnunes/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                  <a href="https://github.com/pablorodriguesnunes" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Github size={18} />
+                  </a>
+                </div>
             </FadeIn>
           </div>
         </div>
