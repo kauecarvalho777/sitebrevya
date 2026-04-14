@@ -5,6 +5,7 @@ import FlowCommerce from "@/components/FlowCommerce";
 import CaseStudy from "@/components/CaseStudy";
 import Pablo from "@/components/Pablo";
 import Timeline from "@/components/Timeline";
+import Team from "@/components/Team";
 import Press from "@/components/Press";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
