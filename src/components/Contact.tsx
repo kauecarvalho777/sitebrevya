@@ -124,7 +124,7 @@ const Contact = () => {
                 </div>
 
                 {/* Chat is always rendered */}
-                <div className="flex flex-col relative">
+                <div className="flex flex-col relative flex-1 min-h-0">
                   {/* WhatsApp header */}
                   <div className="bg-[#202c33] px-2 py-1.5 flex items-center gap-2">
                     <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
@@ -143,7 +143,7 @@ const Contact = () => {
 
                    {/* Chat area */}
                    <div
-                     className="flex-1 px-2.5 py-3 min-h-[380px] max-h-[380px] flex flex-col relative overflow-y-auto"
+                     className="flex-1 px-2.5 py-3 flex flex-col relative overflow-y-auto min-h-0"
                      style={{
                        backgroundImage: `url(${waChatBg})`,
                        backgroundSize: "cover",
