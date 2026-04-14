@@ -179,8 +179,8 @@ const Contact = () => {
                              <path d="M1 0L9 0C9 0 4 4 1 14L0 14L0 0Z" fill="#202c33" />
                            </svg>
                          </div>
-                         <div className="bg-[#111b21] flex items-center justify-center py-5 px-4">
-                           <img src={brevyaAvatar} alt="Brevya" className="w-16 h-16 rounded-full" />
+                         <div className="bg-[#111b21] overflow-hidden">
+                           <img src={brevyaRobot} alt="Brevya" className="w-full h-[120px] object-cover" />
                          </div>
                          <div className="px-2.5 py-2">
                            <p className="text-[#e9edef] text-[14.2px] font-medium leading-[19px]">
