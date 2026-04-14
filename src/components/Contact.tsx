@@ -230,7 +230,7 @@ const Contact = () => {
                    </div>
 
                    {/* Bottom input bar */}
-                   <div className="bg-[#0b141a] px-[6px] py-[5px] relative">
+                   <div className="bg-[#0b141a] px-[6px] py-[5px] pb-[20px] relative shrink-0">
                      {/* Emoji picker */}
                      {showEmojiPicker && (
                        <div className="absolute bottom-full left-0 right-0 bg-[#0b141a] border-t border-[#2a3942] p-2 grid grid-cols-5 gap-1 max-h-[140px] overflow-y-auto">
