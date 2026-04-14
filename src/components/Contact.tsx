@@ -231,88 +231,100 @@ const Contact = () => {
 
                         {screen === "flow" ? (
                           <>
-                            {/* Flow header */}
-                            <div className="bg-[#111b21] px-4 pt-1 pb-3 flex items-center gap-3 border-b border-[#2a3942]">
-                              <button onClick={() => setScreen("chat")} className="text-[#8696a0] hover:text-white transition-colors">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            {/* Flow header — X | Title centered | ⋮ */}
+                            <div className="bg-[#1f2c34] px-4 py-3 flex items-center border-b border-[#2a3942]/60">
+                              <button onClick={() => setScreen("chat")} className="text-[#e9edef] w-8">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <line x1="18" y1="6" x2="6" y2="18" />
                                   <line x1="6" y1="6" x2="18" y2="18" />
                                 </svg>
                               </button>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-[#e9edef] text-[16px] font-semibold">Fale com a gente</p>
-                              </div>
-                              <div className="w-6 h-6 rounded-full bg-[#00a884] flex items-center justify-center">
-                                <span className="text-white text-[10px] font-bold">B</span>
+                              <p className="flex-1 text-[#e9edef] text-[15px] font-semibold text-center">Cadastro</p>
+                              <div className="w-8 flex justify-end">
+                                <MoreVertical size={18} className="text-[#e9edef]" />
                               </div>
                             </div>
 
-                            {/* Flow form */}
-                            <div className="bg-[#111b21] px-4 py-4 flex-1 flex flex-col overflow-y-auto">
-                              <p className="text-[#8696a0] text-[13px] mb-4">Preencha seus dados para que possamos entrar em contato.</p>
+                            {/* Flow body — scrollable */}
+                            <div className="bg-[#111b21] px-5 py-5 flex-1 flex flex-col overflow-y-auto">
+                              {/* Title */}
+                              <h3 className="text-[#e9edef] text-[20px] font-bold leading-tight">Fale com a Brevya</h3>
+                              <p className="text-[#8696a0] text-[14px] mt-2 leading-relaxed">
+                                Precisamos de alguns dados básicos para entrar em contato com você.
+                              </p>
 
-                              <div className="space-y-5 flex-1">
-                                <div>
-                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
-                                    Nome completo <span className="text-[#ea4335]">*</span>
-                                  </label>
-                                  <input
-                                    type="text"
-                                    value={form.name}
-                                    onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
-                                    maxLength={100}
-                                    placeholder="Digite seu nome"
-                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                                  />
-                                  {errors.name && <p className="text-[#ea4335] text-[12px] mt-1">{errors.name}</p>}
-                                </div>
-
-                                <div>
-                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
-                                    Telefone <span className="text-[#ea4335]">*</span>
-                                  </label>
-                                  <input
-                                    type="tel"
-                                    value={form.phone}
-                                    onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
-                                    maxLength={20}
-                                    placeholder="(00) 00000-0000"
-                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                                  />
-                                  {errors.phone && <p className="text-[#ea4335] text-[12px] mt-1">{errors.phone}</p>}
-                                </div>
-
-                                <div>
-                                  <label className="text-[#8696a0] text-[13px] mb-2 block">
-                                    E-mail <span className="text-[#ea4335]">*</span>
-                                  </label>
-                                  <input
-                                    type="email"
-                                    value={form.email}
-                                    onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
-                                    maxLength={255}
-                                    placeholder="seu@email.com"
-                                    className="w-full bg-transparent border-b-[2px] border-[#2a3942] focus:border-[#00a884] px-0 py-2 text-[#e9edef] text-[15px] placeholder:text-[#3b4a54] focus:outline-none transition-colors"
-                                  />
-                                  {errors.email && <p className="text-[#ea4335] text-[12px] mt-1">{errors.email}</p>}
-                                </div>
+                              {/* Security badge */}
+                              <div className="flex items-center gap-1.5 mt-3 mb-5">
+                                <span className="text-[13px]">🔒</span>
+                                <span className="text-[#8696a0] text-[13px]">Seus dados são protegidos</span>
                               </div>
 
-                              {/* Flow CTA */}
-                              <div className="mt-4 pt-2">
-                                <button
-                                  onClick={handleSubmit}
-                                  className="w-full py-[13px] rounded-full bg-[#00a884] text-white font-semibold text-[15px] hover:bg-[#06cf9c] transition-all duration-200 active:scale-[0.98]"
-                                >
-                                  Continuar
-                                </button>
-                                <p className="text-center text-[11px] text-[#8696a0] mt-2.5 flex items-center justify-center gap-1">
-                                  <svg width="10" height="10" viewBox="0 0 16 16" fill="#8696a0">
-                                    <path d="M8 1a4 4 0 00-4 4v2H3a1 1 0 00-1 1v6a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1h-1V5a4 4 0 00-4-4zm2.5 6h-5V5a2.5 2.5 0 015 0v2z" />
-                                  </svg>
-                                  Dados protegidos pela Brevya
-                                </p>
+                              {/* Outlined inputs — fieldset/floating label style */}
+                              <div className="space-y-4 flex-1">
+                                <div className="relative">
+                                  <div className={`rounded-lg border ${errors.name ? 'border-[#ea4335]' : form.name ? 'border-[#3b4a54]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
+                                    <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
+                                      Nome completo
+                                    </label>
+                                    <input
+                                      type="text"
+                                      value={form.name}
+                                      onChange={(e) => { setForm(p => ({ ...p, name: e.target.value })); setErrors(p => ({ ...p, name: "" })); }}
+                                      maxLength={100}
+                                      className="w-full bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#3b4a54]"
+                                      placeholder="Seu nome"
+                                    />
+                                  </div>
+                                  {errors.name && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.name}</p>}
+                                </div>
+
+                                <div className="relative">
+                                  <div className={`rounded-lg border ${errors.phone ? 'border-[#ea4335]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
+                                    <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
+                                      Telefone
+                                    </label>
+                                    <input
+                                      type="tel"
+                                      value={form.phone}
+                                      onChange={(e) => { setForm(p => ({ ...p, phone: e.target.value })); setErrors(p => ({ ...p, phone: "" })); }}
+                                      maxLength={20}
+                                      className="w-full bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#3b4a54]"
+                                      placeholder="(00) 00000-0000"
+                                    />
+                                  </div>
+                                  {errors.phone && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.phone}</p>}
+                                </div>
+
+                                <div className="relative">
+                                  <div className={`rounded-lg border ${errors.email ? 'border-[#ea4335]' : 'border-[#3b4a54]'} px-3 pt-3 pb-2 transition-colors focus-within:border-[#00a884]`}>
+                                    <label className="absolute -top-2.5 left-2.5 bg-[#111b21] px-1 text-[12px] text-[#8696a0]">
+                                      E-mail
+                                    </label>
+                                    <input
+                                      type="email"
+                                      value={form.email}
+                                      onChange={(e) => { setForm(p => ({ ...p, email: e.target.value })); setErrors(p => ({ ...p, email: "" })); }}
+                                      maxLength={255}
+                                      className="w-full bg-transparent text-[#e9edef] text-[15px] focus:outline-none placeholder:text-[#3b4a54]"
+                                      placeholder="seu@email.com"
+                                    />
+                                  </div>
+                                  {errors.email && <p className="text-[#ea4335] text-[11px] mt-1 ml-1">{errors.email}</p>}
+                                </div>
                               </div>
+                            </div>
+
+                            {/* Flow fixed footer */}
+                            <div className="bg-[#111b21] px-5 pb-4 pt-2 border-t border-[#2a3942]/40">
+                              <button
+                                onClick={handleSubmit}
+                                className="w-full py-[14px] rounded-full bg-[#00a884] text-[#111b21] font-bold text-[15px] hover:bg-[#06cf9c] transition-all duration-200 active:scale-[0.98]"
+                              >
+                                Enviar dados
+                              </button>
+                              <p className="text-center text-[11px] text-[#8696a0] mt-2.5">
+                                Gerenciada pela empresa. <span className="text-[#53bdeb]">Saiba mais</span>
+                              </p>
                             </div>
                           </>
                         ) : (
