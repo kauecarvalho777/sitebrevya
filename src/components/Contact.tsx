@@ -163,7 +163,7 @@ const Contact = () => {
                    <div
                      className="flex-1 px-2.5 py-3 flex flex-col relative overflow-y-auto min-h-0 bg-[#efeae2] dark:bg-transparent"
                      style={{
-                       backgroundImage: `url(${waChatBg})`,
+                       backgroundImage: `url(${isDark ? waChatBg : waChatBgLight})`,
                        backgroundSize: "cover",
                        backgroundPosition: "center",
                      }}
