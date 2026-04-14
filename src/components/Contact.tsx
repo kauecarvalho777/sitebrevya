@@ -2,6 +2,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { MessageSquare, CheckCheck, ChevronLeft, Phone, MoreVertical, Smile, Paperclip, Mic, Camera } from "lucide-react";
 import waChatBg from "@/assets/wa-chat-bg.png";
+import brevyaAvatar from "@/assets/brevya-avatar.png";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -109,8 +110,8 @@ const Contact = () => {
                   {/* WhatsApp header */}
                   <div className="bg-[#202c33] px-2 py-1.5 flex items-center gap-2">
                     <ChevronLeft size={22} className="text-[#00a884] shrink-0" />
-                    <div className="w-[34px] h-[34px] rounded-full bg-[#6b7b85] flex items-center justify-center shrink-0 overflow-hidden">
-                      <span className="text-white font-bold text-[13px]">B</span>
+                    <div className="w-[34px] h-[34px] rounded-full shrink-0 overflow-hidden">
+                      <img src={brevyaAvatar} alt="Brevya" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[#e9edef] text-[16px] font-normal leading-tight truncate">Brevya</p>
