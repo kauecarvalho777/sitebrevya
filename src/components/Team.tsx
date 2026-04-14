@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { User } from "lucide-react";
+import { User, ChevronRight } from "lucide-react";
 import pabloImg from "@/assets/pablo.png";
 import kaueImg from "@/assets/kaue-carvalho.png";
 import yanImg from "@/assets/yan-laurentino.png";
@@ -93,15 +93,8 @@ const Team = () => {
             <div
               ref={scrollRef}
               className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
-              style={{
-                maskImage: canScrollRight
-                  ? "linear-gradient(to right, black 70%, transparent 100%)"
-                  : "none",
-                WebkitMaskImage: canScrollRight
-                  ? "linear-gradient(to right, black 70%, transparent 100%)"
-                  : "none",
-              }}
             >
+
               {team.map((member, i) => (
                 <FadeIn key={member.name} delay={0.1 * i}>
                   <motion.div
