@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ScrollToTop from "@/components/ScrollToTop";
 import About from "@/components/About";
 import FlowCommerce from "@/components/FlowCommerce";
 import CaseStudy from "@/components/CaseStudy";
