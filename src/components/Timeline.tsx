@@ -96,7 +96,7 @@ const TimelineCard = ({
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="flex-shrink-0 w-[280px] md:w-[320px] relative group"
+      className="flex-shrink-0 w-[280px] md:w-[320px] relative group flex flex-col"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -127,7 +127,7 @@ const TimelineCard = ({
 
       {/* Card */}
       <motion.div
-        className={`rounded-xl p-5 border transition-all duration-300 ${
+        className={`rounded-xl p-5 border transition-all duration-300 flex-1 ${
           item.highlight
             ? "border-primary/30 bg-primary/5"
             : "border-border/50 bg-surface-elevated/50"
@@ -188,7 +188,7 @@ const Timeline = () => {
           WebkitOverflowScrolling: "touch",
         }}
       >
-        <div className="flex gap-0 px-[max(1rem,calc((100vw-72rem)/2+1rem))]">
+        <div className="flex gap-6 px-[max(1rem,calc((100vw-72rem)/2+1rem))] items-stretch">
           {timelineData.map((item, i) => (
             <TimelineCard key={i} item={item} index={i} />
           ))}
