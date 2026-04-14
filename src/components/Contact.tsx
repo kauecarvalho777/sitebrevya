@@ -97,7 +97,7 @@ const Contact = () => {
           <FadeIn delay={0.15}>
             <div className="flex justify-center">
               {/* Phone frame */}
-              <div className="w-[300px] md:w-[340px] rounded-[2.5rem] border-[6px] border-[#2a2a2e] bg-black shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative">
+              <div className="w-[300px] md:w-[340px] h-[640px] md:h-[700px] rounded-[2.5rem] border-[6px] border-[#2a2a2e] bg-black shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden relative flex flex-col">
                 {/* Notch / Dynamic Island */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[22px] bg-black rounded-b-2xl z-20" />
 
