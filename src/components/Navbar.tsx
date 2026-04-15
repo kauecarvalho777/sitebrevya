@@ -28,7 +28,7 @@ const Navbar = () => {
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {links.map((l) => (
             <a
               key={l.href}
@@ -55,7 +55,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <button
             onClick={toggle}
             className="w-9 h-9 rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground"
@@ -73,7 +73,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="md:hidden bg-background border-t border-border px-4 pb-4">
+        <div className="lg:hidden bg-background border-t border-border px-4 pb-4">
           {links.map((l) => (
             <a
               key={l.href}
