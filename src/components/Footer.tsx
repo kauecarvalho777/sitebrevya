@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { BackgroundBeams } from "@/components/ui/aceternity/background-beams";
 import logo from "@/assets/logo_brevya.png";
 import { useTheme } from "@/hooks/use-theme";
