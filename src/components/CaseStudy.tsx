@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ExternalLink, ShoppingCart, Users, Building2, LayoutDashboard, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ShoppingCart, Users, Building2, LayoutDashboard, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/aceternity/card-spotlight";
 
 import lecarCheckout from "@/assets/cases/lecar-checkout.png";
@@ -48,6 +48,7 @@ const screenshots = [
 
 const CaseStudy = () => {
   const [current, setCurrent] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<ReturnType<typeof setInterval>>();
 
@@ -109,6 +110,18 @@ const CaseStudy = () => {
       });
     }, 4000);
   };
+
+  // Keyboard nav for lightbox
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox((lightbox + 1) % screenshots.length);
+      if (e.key === "ArrowLeft") setLightbox((lightbox - 1 + screenshots.length) % screenshots.length);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightbox]);
 
   return (
     <section id="cases" className="py-24 lg:py-32 bg-background overflow-hidden">
@@ -228,8 +241,7 @@ const CaseStudy = () => {
                     : "border-border opacity-60 hover:opacity-80"
                 }`}
                 style={{ width: "min(80vw, 700px)", height: "400px" }}
-                onClick={() => { goTo(i); resetAutoplay(); }}
-                whileHover={{ scale: 1.02 }}
+                onClick={() => { goTo(i); resetAutoplay(); setLightbox(i); }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img
@@ -258,6 +270,71 @@ const CaseStudy = () => {
           </div>
         </div>
       </FadeIn>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            onClick={() => setLightbox(null)}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-card/80 border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + screenshots.length) % screenshots.length); }}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card/80 border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
+            >
+              <ChevronLeft size={22} />
+            </button>
+
+            {/* Next */}
+            <button
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % screenshots.length); }}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card/80 border border-border flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all"
+            >
+              <ChevronRight size={22} />
+            </button>
+
+            {/* Image */}
+            <motion.img
+              key={lightbox}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              src={screenshots[lightbox].src}
+              alt={screenshots[lightbox].alt}
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              {screenshots.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setLightbox(i); }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === lightbox
+                      ? "bg-primary w-6"
+                      : "bg-white/30 hover:bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
