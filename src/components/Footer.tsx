@@ -19,6 +19,29 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 };
 
+const ReclameAquiSeal = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const script = document.createElement("script");
+    script.id = "ra-embed-reputation";
+    script.src = "https://s3.amazonaws.com/raichu-beta/selos/bundle.js";
+    script.setAttribute("data-id", "UWpSR1JDQkhsUVduMFBmTTpwYWJsby1yb2RyaWd1ZXMtbnVuZXMtbHRkYQ==");
+    script.setAttribute("data-target", "reputation-ra");
+    script.setAttribute("data-model", "2");
+    containerRef.current.appendChild(script);
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
+  return <div id="reputation-ra" ref={containerRef} />;
+};
+
 const Footer = () => {
   const { dark } = useTheme();
 
