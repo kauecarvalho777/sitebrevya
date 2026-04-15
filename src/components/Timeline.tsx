@@ -132,7 +132,7 @@ const TimelineCard = ({
             ? "border-primary/30 bg-primary/5"
             : "border-border/50 bg-surface-elevated/50"
         } ${hovered ? "border-primary/40 shadow-lg shadow-primary/5" : ""}`}
-        animate={hovered ? { scale: 1.03 } : { scale: 1 }}
+        animate={hovered ? { scale: 1 } : { scale: 1 }}
         transition={{ type: "spring", stiffness: 400 }}
       >
         <h3
@@ -182,7 +182,7 @@ const Timeline = () => {
       {/* Horizontal scroll container */}
       <div
         ref={scrollRef}
-        className="overflow-x-auto scrollbar-hide pb-6"
+        className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-6"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
