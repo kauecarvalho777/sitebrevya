@@ -92,11 +92,12 @@ const Footer = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12">
+      <footer className="border-t border-border py-10 md:py-12">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+          {/* Mobile: stacked centered layout / Desktop: 3-col grid */}
+          <div className="flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-start md:gap-8">
             {/* Coluna 1 — Logo */}
-            <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="flex flex-col items-center md:items-start gap-3">
               <img
                 src={logo}
                 alt="Brevya"
@@ -107,41 +108,47 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Coluna 2 — Links úteis */}
-            <div className="flex flex-col items-center md:items-start gap-3">
-              <h4 className="text-sm font-semibold text-foreground">Links úteis</h4>
-              <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <a href="#sobre" className="hover:text-primary transition-colors">Sobre a Brevya</a>
-                <a href="#timeline" className="hover:text-primary transition-colors">Nossa história</a>
-                <a href="#flow-commerce" className="hover:text-primary transition-colors">Flow Commerce</a>
-                <a href="#cases" className="hover:text-primary transition-colors">Cases</a>
-                <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
-              </nav>
+            {/* Mobile: Links e Contato lado a lado */}
+            <div className="grid grid-cols-2 gap-6 w-full max-w-sm md:contents">
+              {/* Coluna 2 — Links úteis */}
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-foreground">Links úteis</h4>
+                <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  <a href="#sobre" className="hover:text-primary transition-colors">Sobre a Brevya</a>
+                  <a href="#timeline" className="hover:text-primary transition-colors">Nossa história</a>
+                  <a href="#flow-commerce" className="hover:text-primary transition-colors">Flow Commerce</a>
+                  <a href="#cases" className="hover:text-primary transition-colors">Cases</a>
+                  <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
+                </nav>
+              </div>
+
+              {/* Coluna 3 — Contato */}
+              <div className="flex flex-col gap-3">
+                <h4 className="text-sm font-semibold text-foreground">Contato</h4>
+                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                  <a href="mailto:contato@brevya.com.br" className="hover:text-primary transition-colors break-all">
+                    contato@brevya.com.br
+                  </a>
+                  <a href="tel:+551153041000" className="hover:text-primary transition-colors">
+                    (11) 5304-1000
+                  </a>
+                  <p className="text-xs mt-1 leading-relaxed">
+                    Alameda Terracota, 185, Cerâmica
+                    <br />São Caetano do Sul/SP
+                    <br />09531-190
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Coluna 3 — Contato + Selo */}
-            <div className="flex flex-col items-center md:items-start gap-3">
-              <h4 className="text-sm font-semibold text-foreground">Contato</h4>
-              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <a href="mailto:contato@brevya.com.br" className="hover:text-primary transition-colors">
-                  contato@brevya.com.br
-                </a>
-                <a href="tel:+551153041000" className="hover:text-primary transition-colors">
-                  (11) 5304-1000
-                </a>
-                <p className="text-xs mt-1">
-                  Alameda Terracota, 185, Cerâmica
-                  <br />São Caetano do Sul/SP, 09531-190
-                </p>
-              </div>
-              <div className="mt-2">
-                <ReclameAquiSeal />
-              </div>
+            {/* Selo Reclame Aqui — centralizado no mobile */}
+            <div className="flex justify-center md:col-span-3 md:justify-start">
+              <ReclameAquiSeal />
             </div>
           </div>
 
           {/* Linha inferior */}
-          <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+          <div className="mt-8 pt-6 border-t border-border flex flex-col items-center gap-2 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:text-left">
             <p>
               CNPJ:{" "}
               <a href="https://cnpj.biz/62319275000140" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline underline-offset-2">
