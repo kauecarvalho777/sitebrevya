@@ -1,57 +1,37 @@
-import { useEffect, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-const THEME_STORAGE_KEY = "theme";
-const themeListeners = new Set<() => void>();
+const listeners = new Set<(dark: boolean) => void>();
 
-const getStoredTheme = () => {
-  if (typeof window === "undefined") {
-    return true;
-  }
-
-  return localStorage.getItem(THEME_STORAGE_KEY) !== "light";
+const getInitial = () => {
+  if (typeof window === "undefined") return true;
+  return localStorage.getItem("theme") !== "light";
 };
 
-const syncThemeClass = (dark: boolean) => {
-  if (typeof document === "undefined") {
-    return;
-  }
-
-  document.documentElement.classList.toggle("dark", dark);
-};
-
-const setTheme = (dark: boolean) => {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  localStorage.setItem(THEME_STORAGE_KEY, dark ? "dark" : "light");
-  syncThemeClass(dark);
-  themeListeners.forEach((listener) => listener());
-};
-
-const subscribe = (listener: () => void) => {
-  themeListeners.add(listener);
-
-  const handleStorage = (event: StorageEvent) => {
-    if (event.key === THEME_STORAGE_KEY) {
-      listener();
-    }
-  };
-
-  window.addEventListener("storage", handleStorage);
-
-  return () => {
-    themeListeners.delete(listener);
-    window.removeEventListener("storage", handleStorage);
-  };
-};
+let currentDark = getInitial();
 
 export const useTheme = () => {
-  const dark = useSyncExternalStore(subscribe, getStoredTheme, () => true);
+  const [dark, setDark] = useState(currentDark);
 
   useEffect(() => {
-    syncThemeClass(dark);
+    const handler = (v: boolean) => setDark(v);
+    listeners.add(handler);
+    // sync in case another instance toggled before mount
+    if (dark !== currentDark) setDark(currentDark);
+    return () => { listeners.delete(handler); };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+    currentDark = dark;
   }, [dark]);
 
-  return { dark, toggle: () => setTheme(!dark) };
+  const toggle = useCallback(() => {
+    const next = !currentDark;
+    currentDark = next;
+    listeners.forEach((fn) => fn(next));
+  }, []);
+
+  return { dark, toggle };
 };
