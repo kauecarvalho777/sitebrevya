@@ -182,9 +182,10 @@ const Timeline = () => {
       {/* Horizontal scroll container */}
       <div
         ref={scrollRef}
-        className="overflow-x-auto scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent pb-6"
+        className="overflow-x-auto scrollbar-hide pb-6"
         style={{
-          scrollbarWidth: "thin",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
           WebkitOverflowScrolling: "touch",
         }}
       >
