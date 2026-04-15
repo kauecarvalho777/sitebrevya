@@ -24,7 +24,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Brevya"
-            className={`h-12 ${dark ? "" : "invert"}`}
+            className={`h-[62px] ${dark ? "" : "invert"}`}
           />
         </a>
 
