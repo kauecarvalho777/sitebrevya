@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ExternalLink, ShoppingCart, Users, Building2, LayoutDashboard, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ShoppingCart, Users, Building2, LayoutDashboard, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { CardSpotlight } from "@/components/ui/aceternity/card-spotlight";
 
 import lecarCheckout from "@/assets/cases/lecar-checkout.png";
