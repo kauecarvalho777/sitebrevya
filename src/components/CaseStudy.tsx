@@ -48,6 +48,7 @@ const screenshots = [
 
 const CaseStudy = () => {
   const [current, setCurrent] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<ReturnType<typeof setInterval>>();
 
