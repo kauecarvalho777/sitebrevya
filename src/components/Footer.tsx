@@ -100,7 +100,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Brevya"
-                className={`h-10 opacity-70 ${dark ? "" : "invert"}`}
+                className={`h-10 ${dark ? "opacity-70" : "invert opacity-90"}`}
               />
               <p className="text-xs text-muted-foreground max-w-[220px] text-center md:text-left">
                 Tecnologia para empresas que querem escalar com visão e inteligência.
