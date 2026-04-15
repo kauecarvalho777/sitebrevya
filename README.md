@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Brevya — Tecnologia, Estratégia e Inovação
 
-TODO: Document your project here
+Site institucional da Brevya, empresa brasileira de tecnologia e consultoria especializada em inovação estratégica, automação e inteligência artificial.
