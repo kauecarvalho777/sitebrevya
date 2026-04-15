@@ -132,7 +132,7 @@ const TimelineCard = ({
             ? "border-primary/30 bg-primary/5"
             : "border-border/50 bg-surface-elevated/50"
         } ${hovered ? "border-primary/40 shadow-lg shadow-primary/5" : ""}`}
-        animate={hovered ? { y: -4 } : { y: 0 }}
+        animate={hovered ? { scale: 1.03 } : { scale: 1 }}
         transition={{ type: "spring", stiffness: 400 }}
       >
         <h3

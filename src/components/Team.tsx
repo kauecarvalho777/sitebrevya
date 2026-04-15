@@ -76,7 +76,7 @@ const Team = () => {
             <FadeIn key={member.name} delay={0.1 * i}>
               <motion.div
                 className="group relative flex-shrink-0 w-[220px] md:w-[260px]"
-                whileHover={{ y: -4 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 <div className="relative overflow-hidden rounded-xl aspect-[3/4] bg-surface-elevated border border-border mb-4">
