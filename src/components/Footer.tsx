@@ -92,18 +92,63 @@ const Footer = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8">
-        <div className="container mx-auto px-4 lg:px-8 flex flex-col items-center gap-4 text-center">
-          <img
-            src={logo}
-            alt="Brevya"
-            className={`h-9 opacity-60 ${dark ? "" : "invert"}`}
-          />
-          <ReclameAquiSeal />
-          <div className="flex flex-col items-center gap-1 text-xs text-muted-foreground">
-            <p>CNPJ: <a href="https://cnpj.biz/62319275000140" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline underline-offset-2">62.319.275/0001-40</a></p>
-            <p>Alameda Terracota, 185, Cerâmica — São Caetano do Sul/SP, 09531-190</p>
-            <p className="mt-1">© {new Date().getFullYear()} Brevya. Todos os direitos reservados.</p>
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+            {/* Coluna 1 — Logo */}
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <img
+                src={logo}
+                alt="Brevya"
+                className={`h-10 opacity-70 ${dark ? "" : "invert"}`}
+              />
+              <p className="text-xs text-muted-foreground max-w-[220px] text-center md:text-left">
+                Tecnologia para empresas que querem escalar com visão e inteligência.
+              </p>
+            </div>
+
+            {/* Coluna 2 — Links úteis */}
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <h4 className="text-sm font-semibold text-foreground">Links úteis</h4>
+              <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <a href="#sobre" className="hover:text-primary transition-colors">Sobre a Brevya</a>
+                <a href="#timeline" className="hover:text-primary transition-colors">Nossa história</a>
+                <a href="#flow-commerce" className="hover:text-primary transition-colors">Flow Commerce</a>
+                <a href="#cases" className="hover:text-primary transition-colors">Cases</a>
+                <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
+              </nav>
+            </div>
+
+            {/* Coluna 3 — Contato + Selo */}
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <h4 className="text-sm font-semibold text-foreground">Contato</h4>
+              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <a href="mailto:contato@brevya.com.br" className="hover:text-primary transition-colors">
+                  contato@brevya.com.br
+                </a>
+                <a href="tel:+551153041000" className="hover:text-primary transition-colors">
+                  (11) 5304-1000
+                </a>
+                <p className="text-xs mt-1">
+                  Alameda Terracota, 185, Cerâmica
+                  <br />São Caetano do Sul/SP, 09531-190
+                </p>
+              </div>
+              <div className="mt-2">
+                <ReclameAquiSeal />
+              </div>
+            </div>
+          </div>
+
+          {/* Linha inferior */}
+          <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+            <p>
+              CNPJ:{" "}
+              <a href="https://cnpj.biz/62319275000140" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline underline-offset-2">
+                62.319.275/0001-40
+              </a>
+            </p>
+            <p>© {new Date().getFullYear()} Brevya. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
