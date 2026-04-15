@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { BackgroundBeams } from "@/components/ui/aceternity/background-beams";
 import logo from "@/assets/logo_brevya.png";
 import { useTheme } from "@/hooks/use-theme";
@@ -17,6 +17,29 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
       {children}
     </motion.div>
   );
+};
+
+const ReclameAquiSeal = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const script = document.createElement("script");
+    script.id = "ra-embed-reputation";
+    script.src = "https://s3.amazonaws.com/raichu-beta/selos/bundle.js";
+    script.setAttribute("data-id", "UWpSR1JDQkhsUVduMFBmTTpwYWJsby1yb2RyaWd1ZXMtbnVuZXMtbHRkYQ==");
+    script.setAttribute("data-target", "reputation-ra");
+    script.setAttribute("data-model", "2");
+    containerRef.current.appendChild(script);
+
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
+      }
+    };
+  }, []);
+
+  return <div id="reputation-ra" ref={containerRef} />;
 };
 
 const Footer = () => {
@@ -70,12 +93,13 @@ const Footer = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
-        <div className="container mx-auto px-4 lg:px-8 flex flex-col items-center gap-3 text-center">
+        <div className="container mx-auto px-4 lg:px-8 flex flex-col items-center gap-4 text-center">
           <img
             src={logo}
             alt="Brevya"
             className={`h-9 opacity-60 ${dark ? "" : "invert"}`}
           />
+          <ReclameAquiSeal />
           <div className="flex flex-col items-center gap-1 text-xs text-muted-foreground">
             <p>CNPJ: <a href="https://cnpj.biz/62319275000140" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline underline-offset-2">62.319.275/0001-40</a></p>
             <p>Alameda Terracota, 185, Cerâmica — São Caetano do Sul/SP, 09531-190</p>
