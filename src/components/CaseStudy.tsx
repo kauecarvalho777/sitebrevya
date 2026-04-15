@@ -111,6 +111,18 @@ const CaseStudy = () => {
     }, 4000);
   };
 
+  // Keyboard nav for lightbox
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox((lightbox + 1) % screenshots.length);
+      if (e.key === "ArrowLeft") setLightbox((lightbox - 1 + screenshots.length) % screenshots.length);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightbox]);
+
   return (
     <section id="cases" className="py-24 lg:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
