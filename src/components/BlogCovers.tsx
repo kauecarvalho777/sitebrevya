@@ -333,8 +333,71 @@ export const CoverIA = ({ className }: { className?: string }) => {
   );
 };
 
+// Cover 5: Flow Commerce WhatsApp — phone with flowing chat bubbles
+export const CoverFlowCommerce = ({ className }: { className?: string }) => {
+  return (
+    <div className={cn("relative overflow-hidden bg-background", className)}>
+      {/* WhatsApp green gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#00a884]/10 via-transparent to-[#00a884]/5" />
+
+      {/* Phone outline */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-24 rounded-xl border-2 border-[#00a884]/40 flex flex-col items-center justify-center gap-1 p-1.5">
+        {/* Mini flow screens */}
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            className="w-full h-3 rounded-sm bg-[#00a884]/20"
+            animate={{ opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 1.5, delay: i * 0.4, repeat: Infinity }}
+          />
+        ))}
+      </div>
+
+      {/* Floating cart/payment icons */}
+      {["🛒", "💳", "📦", "✅"].map((emoji, i) => (
+        <motion.div
+          key={i}
+          className="absolute text-lg"
+          style={{
+            left: `${20 + i * 20}%`,
+            top: `${15 + (i % 2) * 55}%`,
+          }}
+          animate={{
+            y: [0, -6, 0],
+            opacity: [0.4, 0.8, 0.4],
+          }}
+          transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
+        >
+          {emoji}
+        </motion.div>
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-end h-full p-4 pb-5 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-[10px] uppercase tracking-[0.3em] text-[#00a884] font-semibold mb-1"
+        >
+          Flow Commerce
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-xs font-bold text-foreground leading-tight"
+        >
+          E-commerce no WhatsApp
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
 // Map slug to cover component
 export const blogCovers: Record<string, React.FC<{ className?: string }>> = {
+  "flow-commerce-ecommerce-whatsapp": CoverFlowCommerce,
   "tese-da-brevya-tecnologia-possibilidades": CoverTeseBrevya,
   "ecommerce-nova-logica": CoverEcommerce,
   "tese-pablo-inovacao": CoverTesePablo,
