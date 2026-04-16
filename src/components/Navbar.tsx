@@ -14,6 +14,7 @@ const Navbar = () => {
     { label: "Fundador", href: "#pablo" },
     { label: "Equipe", href: "#equipe" },
     { label: "Imprensa", href: "#imprensa" },
+    { label: "Blog", href: "/blog" },
     { label: "Contato", href: "#contato" },
   ];
 
