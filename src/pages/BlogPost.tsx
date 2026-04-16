@@ -4,6 +4,7 @@ import { Calendar, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReadMoreCarousel from "@/components/ReadMoreCarousel";
+import FlowCommerceDemo from "@/components/FlowCommerceDemo";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -99,6 +100,17 @@ const BlogPost = () => {
         <div className="mt-8 text-base">
           {renderContent(post.content)}
         </div>
+
+        {/* Flow Commerce interactive demo */}
+        {post.hasFlowDemo && (
+          <div className="mt-16 mb-8">
+            <h2 className="text-xl font-bold mb-2 text-center">Experimente o Flow Commerce</h2>
+            <p className="text-sm text-muted-foreground text-center mb-8 max-w-md mx-auto">
+              Interaja com a simulação abaixo e veja como funciona a jornada completa de compra dentro do WhatsApp.
+            </p>
+            <FlowCommerceDemo />
+          </div>
+        )}
       </article>
 
       {/* Infinite Carousel - Leia mais */}
