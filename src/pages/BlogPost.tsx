@@ -1,8 +1,9 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { getPostBySlug, posts } from "@/data/posts";
-import { Calendar, Tag, User } from "lucide-react";
+import { Calendar, Tag, User, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useRef } from "react";
 import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 
 const BlogPost = () => {
@@ -113,11 +114,33 @@ const BlogPost = () => {
       {/* Infinite Carousel - Leia mais */}
       {otherPosts.length > 0 && (
         <section className="border-t border-border py-16">
-          <div className="container mx-auto px-4 lg:px-8">
-            <h2 className="text-xl font-bold mb-10">Leia também</h2>
+          <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between mb-10">
+            <h2 className="text-xl font-bold">Leia também</h2>
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  const el = document.getElementById("carousel-track");
+                  if (el) el.scrollBy({ left: -340, behavior: "smooth" });
+                }}
+                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
+                aria-label="Anterior"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("carousel-track");
+                  if (el) el.scrollBy({ left: 340, behavior: "smooth" });
+                }}
+                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
+                aria-label="Próximo"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
           <div className="overflow-hidden">
-            <div className="flex animate-scroll-left gap-6 w-max">
+            <div id="carousel-track" className="flex animate-scroll-left gap-6 w-max overflow-x-auto scrollbar-hide" style={{ scrollBehavior: "smooth" }}>
               {[...otherPosts, ...otherPosts, ...otherPosts].map((p, idx) => (
                 <Link
                   key={`${p.slug}-${idx}`}
