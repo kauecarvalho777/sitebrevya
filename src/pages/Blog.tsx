@@ -22,7 +22,7 @@ const Blog = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {posts.map((post) => {
+          {[...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => {
             const Cover = blogCovers[post.slug];
             return (
               <Link
