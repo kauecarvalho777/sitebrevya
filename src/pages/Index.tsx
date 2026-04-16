@@ -8,6 +8,7 @@ import Pablo from "@/components/Pablo";
 import Timeline from "@/components/Timeline";
 import Team from "@/components/Team";
 import Press from "@/components/Press";
+import LatestPosts from "@/components/LatestPosts";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -23,6 +24,7 @@ const Index = () => {
       <Timeline />
       <Team />
       <Press />
+      <LatestPosts />
       <Contact />
       <Footer />
       <ScrollToTop />

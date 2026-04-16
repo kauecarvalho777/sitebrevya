@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/logo_brevya.png";
@@ -14,6 +15,7 @@ const Navbar = () => {
     { label: "Fundador", href: "#pablo" },
     { label: "Equipe", href: "#equipe" },
     { label: "Imprensa", href: "#imprensa" },
+    { label: "Blog", href: "/blog" },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -29,15 +31,25 @@ const Navbar = () => {
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
 
           <button
             onClick={toggle}
@@ -74,16 +86,27 @@ const Navbar = () => {
 
       {open && (
         <div className="lg:hidden bg-background border-t border-border px-4 pb-4">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="block py-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="#contato"
             className="block mt-2 text-center text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-md"
