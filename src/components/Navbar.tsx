@@ -9,12 +9,12 @@ const Navbar = () => {
   const { dark, toggle } = useTheme();
 
   const links = [
-    { label: "A Brevya", href: "#sobre" },
-    { label: "FlowCommerce", href: "#flow-commerce" },
-    { label: "Cases", href: "#cases" },
-    { label: "Imprensa", href: "#imprensa" },
+    { label: "A Brevya", href: "/#sobre" },
+    { label: "FlowCommerce", href: "/#flow-commerce" },
+    { label: "Cases", href: "/#cases" },
+    { label: "Imprensa", href: "/#imprensa" },
     { label: "Blog", href: "/blog" },
-    { label: "Contato", href: "#contato" },
+    { label: "Contato", href: "/#contato" },
   ];
 
   return (
