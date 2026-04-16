@@ -61,15 +61,6 @@ const BlogPost = () => {
       });
   };
 
-  // Build items for infinite carousel
-  const carouselItems = otherPosts.map((p) => ({
-    quote: p.excerpt,
-    name: p.title,
-    title: p.category,
-    slug: p.slug,
-    image: p.image,
-    date: p.date,
-  }));
 
   return (
     <div className="min-h-screen bg-background text-foreground">
