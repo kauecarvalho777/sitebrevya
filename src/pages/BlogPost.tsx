@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReadMoreCarousel from "@/components/ReadMoreCarousel";
 import FlowCommerceDemo from "@/components/FlowCommerceDemo";
+import { blogCovers } from "@/components/BlogCovers";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -13,6 +14,7 @@ const BlogPost = () => {
   if (!post) return <Navigate to="/blog" replace />;
 
   const otherPosts = posts.filter((p) => p.slug !== post.slug);
+  const Cover = blogCovers[post.slug];
 
   // Simple markdown-like rendering
   const renderContent = (content: string) => {
@@ -67,13 +69,17 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      {/* Hero Image */}
-      <div className="w-full max-h-[420px] overflow-hidden mt-16">
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full h-full object-cover"
-        />
+      {/* Hero Cover */}
+      <div className="w-full h-[420px] overflow-hidden mt-16">
+        {Cover ? (
+          <Cover className="w-full h-full" />
+        ) : (
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
 
       {/* Article */}
