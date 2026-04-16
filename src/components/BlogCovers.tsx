@@ -337,52 +337,65 @@ export const CoverIA = ({ className }: { className?: string }) => {
   );
 };
 
-// Cover 5: Flow Commerce WhatsApp — phone with flowing chat bubbles
+// Cover 5: Flow Commerce WhatsApp — floating bubbles + glow
 export const CoverFlowCommerce = ({ className }: { className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setMouse({
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    });
+  };
+
   return (
-    <div className={cn("relative overflow-hidden bg-background", className)}>
-      {/* WhatsApp green gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#00a884]/10 via-transparent to-[#00a884]/5" />
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      className={cn("relative overflow-hidden bg-background", className)}
+    >
+      {/* Mouse-reactive glow */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(152 69% 31% / 0.12), transparent 70%)`,
+        }}
+      />
 
-      {/* Phone outline */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-24 rounded-xl border-2 border-[#00a884]/40 flex flex-col items-center justify-center gap-1 p-1.5">
-        {/* Mini flow screens */}
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="w-full h-3 rounded-sm bg-[#00a884]/20"
-            animate={{ opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 1.5, delay: i * 0.4, repeat: Infinity }}
-          />
-        ))}
-      </div>
-
-      {/* Floating cart/payment icons */}
-      {["🛒", "💳", "📦", "✅"].map((emoji, i) => (
+      {/* Floating bubbles */}
+      {[0, 1, 2, 3, 4].map((i) => (
         <motion.div
           key={i}
-          className="absolute text-lg"
+          className="absolute rounded-full border border-[#00a884]/20 bg-[#00a884]/5"
           style={{
-            left: `${20 + i * 20}%`,
-            top: `${15 + (i % 2) * 55}%`,
+            width: `${20 + i * 8}px`,
+            height: `${20 + i * 8}px`,
+            left: `${10 + i * 18}%`,
+            top: `${20 + (i % 3) * 22}%`,
           }}
           animate={{
-            y: [0, -6, 0],
-            opacity: [0.4, 0.8, 0.4],
+            y: [0, -8, 0],
+            opacity: [0.3, 0.7, 0.3],
           }}
-          transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
-        >
-          {emoji}
-        </motion.div>
+          transition={{
+            duration: 2 + i * 0.4,
+            delay: i * 0.3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       ))}
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-end h-full p-4 pb-5 text-center">
+      {/* Content — centered like all other covers */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="text-[10px] uppercase tracking-[0.3em] text-[#00a884] font-semibold mb-1"
+          className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-2"
         >
           Flow Commerce
         </motion.div>
@@ -390,9 +403,9 @@ export const CoverFlowCommerce = ({ className }: { className?: string }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xs font-bold text-foreground leading-tight"
+          className="text-lg md:text-xl font-bold text-foreground leading-tight"
         >
-          E-commerce no WhatsApp
+          WhatsApp
         </motion.div>
       </div>
     </div>
