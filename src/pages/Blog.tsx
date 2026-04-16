@@ -3,6 +3,7 @@ import { posts } from "@/data/posts";
 import { Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { blogCovers } from "@/components/BlogCovers";
 
 const Blog = () => {
   return (
@@ -21,40 +22,47 @@ const Blog = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              to={`/blog/${post.slug}`}
-              className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300"
-            >
-              <div className="aspect-[16/9] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                  <span className="inline-flex items-center gap-1">
-                    <Tag size={12} />
-                    {post.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <Calendar size={12} />
-                    {new Date(post.date).toLocaleDateString("pt-BR")}
-                  </span>
+          {posts.map((post) => {
+            const Cover = blogCovers[post.slug];
+            return (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300"
+              >
+                <div className="aspect-[16/9] overflow-hidden">
+                  {Cover ? (
+                    <Cover className="w-full h-full" />
+                  ) : (
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  )}
                 </div>
-                <h2 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
-                  {post.title}
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-                  {post.excerpt}
-                </p>
-              </div>
-            </Link>
-          ))}
+                <div className="p-6">
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                    <span className="inline-flex items-center gap-1">
+                      <Tag size={12} />
+                      {post.category}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Calendar size={12} />
+                      {new Date(post.date).toLocaleDateString("pt-BR")}
+                    </span>
+                  </div>
+                  <h2 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
 

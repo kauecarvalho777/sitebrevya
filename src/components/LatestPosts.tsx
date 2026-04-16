@@ -3,6 +3,7 @@ import { getLatestPosts } from "@/data/posts";
 import { Calendar, Tag, ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { blogCovers } from "@/components/BlogCovers";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -44,41 +45,48 @@ const LatestPosts = () => {
         </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {latestPosts.map((post, i) => (
-            <FadeIn key={post.slug} delay={i * 0.1}>
-              <Link
-                to={`/blog/${post.slug}`}
-                className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300 block h-full"
-              >
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                    <span className="inline-flex items-center gap-1">
-                      <Tag size={12} />
-                      {post.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Calendar size={12} />
-                      {new Date(post.date).toLocaleDateString("pt-BR")}
-                    </span>
+          {latestPosts.map((post, i) => {
+            const Cover = blogCovers[post.slug];
+            return (
+              <FadeIn key={post.slug} delay={i * 0.1}>
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300 block h-full"
+                >
+                  <div className="aspect-[16/9] overflow-hidden">
+                    {Cover ? (
+                      <Cover className="w-full h-full" />
+                    ) : (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    )}
                   </div>
-                  <h3 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                </div>
-              </Link>
-            </FadeIn>
-          ))}
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                      <span className="inline-flex items-center gap-1">
+                        <Tag size={12} />
+                        {post.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Calendar size={12} />
+                        {new Date(post.date).toLocaleDateString("pt-BR")}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+            );
+          })}
         </div>
 
         <div className="mt-8 text-center sm:hidden">
