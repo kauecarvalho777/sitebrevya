@@ -12,8 +12,6 @@ const Navbar = () => {
     { label: "A Brevya", href: "#sobre" },
     { label: "FlowCommerce", href: "#flow-commerce" },
     { label: "Cases", href: "#cases" },
-    { label: "Fundador", href: "#pablo" },
-    { label: "Equipe", href: "#equipe" },
     { label: "Imprensa", href: "#imprensa" },
     { label: "Blog", href: "/blog" },
     { label: "Contato", href: "#contato" },
