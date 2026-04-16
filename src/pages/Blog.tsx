@@ -1,25 +1,16 @@
 import { Link } from "react-router-dom";
 import { posts } from "@/data/posts";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { Calendar, Tag } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <div className="border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 py-6 flex items-center gap-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Voltar ao site
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
+      <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24 pt-24 lg:pt-32">
         <div className="max-w-2xl mb-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             Blog da <span className="text-primary">Brevya</span>
@@ -66,6 +57,8 @@ const Blog = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
