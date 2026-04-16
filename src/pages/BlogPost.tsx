@@ -3,7 +3,7 @@ import { getPostBySlug, posts } from "@/data/posts";
 import { Calendar, Tag, User, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 
 const BlogPost = () => {
@@ -112,64 +112,7 @@ const BlogPost = () => {
       </article>
 
       {/* Infinite Carousel - Leia mais */}
-      {otherPosts.length > 0 && (
-        <section className="border-t border-border py-16">
-          <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between mb-10">
-            <h2 className="text-xl font-bold">Leia também</h2>
-            <div className="flex gap-2">
-              <button
-                onClick={() => {
-                  const el = document.getElementById("carousel-track");
-                  if (el) el.scrollBy({ left: -340, behavior: "smooth" });
-                }}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
-                aria-label="Anterior"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("carousel-track");
-                  if (el) el.scrollBy({ left: 340, behavior: "smooth" });
-                }}
-                className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary transition-colors"
-                aria-label="Próximo"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-          <div className="overflow-hidden">
-            <div id="carousel-track" className="flex animate-scroll-left gap-6 w-max overflow-x-auto scrollbar-hide" style={{ scrollBehavior: "smooth" }}>
-              {[...otherPosts, ...otherPosts, ...otherPosts].map((p, idx) => (
-                <Link
-                  key={`${p.slug}-${idx}`}
-                  to={`/blog/${p.slug}`}
-                  className="group flex-shrink-0 w-[320px] rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300"
-                >
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
-                      <span>{p.category}</span>
-                      <span>{new Date(p.date).toLocaleDateString("pt-BR")}</span>
-                    </div>
-                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors line-clamp-2">
-                      {p.title}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {otherPosts.length > 0 && <ReadMoreCarousel currentSlug={post.slug} />}
 
       <Footer />
     </div>
