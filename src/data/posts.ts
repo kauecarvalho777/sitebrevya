@@ -7,6 +7,7 @@ export interface Post {
   date: string;
   author: string;
   category: string;
+  hasFlowDemo?: boolean;
 }
 
 export const posts: Post[] = [
