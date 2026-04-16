@@ -114,11 +114,11 @@ const Footer = () => {
               <div className="flex flex-col gap-3">
                 <h4 className="text-sm font-semibold text-foreground">Links úteis</h4>
                 <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-                  <a href="#sobre" className="hover:text-primary transition-colors">Sobre a Brevya</a>
-                  <a href="#timeline" className="hover:text-primary transition-colors">Nossa história</a>
-                  <a href="#flow-commerce" className="hover:text-primary transition-colors">Flow Commerce</a>
-                  <a href="#cases" className="hover:text-primary transition-colors">Cases</a>
-                  <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
+                  <a href="/#sobre" className="hover:text-primary transition-colors">Sobre a Brevya</a>
+                  <a href="/#timeline" className="hover:text-primary transition-colors">Nossa história</a>
+                  <a href="/#flow-commerce" className="hover:text-primary transition-colors">Flow Commerce</a>
+                  <a href="/#cases" className="hover:text-primary transition-colors">Cases</a>
+                  <a href="/#contato" className="hover:text-primary transition-colors">Contato</a>
                 </nav>
               </div>
 
