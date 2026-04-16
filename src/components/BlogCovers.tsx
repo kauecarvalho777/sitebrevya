@@ -412,6 +412,120 @@ export const CoverFlowCommerce = ({ className }: { className?: string }) => {
   );
 };
 
+// Cover 6: Automação — rotating gears
+export const CoverAutomacao = ({ className }: { className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setMouse({ x: (e.clientX - rect.left) / rect.width, y: (e.clientY - rect.top) / rect.height });
+  };
+
+  return (
+    <div ref={ref} onMouseMove={handleMouseMove} className={cn("relative overflow-hidden bg-background", className)}>
+      <div className="absolute inset-0" style={{ background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(56 18% 42% / 0.12), transparent 70%)` }} />
+      {/* Rotating circles like gears */}
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute border border-primary/20 rounded-full"
+          style={{
+            width: `${50 + i * 25}px`,
+            height: `${50 + i * 25}px`,
+            left: `${30 + i * 15}%`,
+            top: `${25 + i * 15}%`,
+            transformOrigin: "center",
+          }}
+          animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
+          transition={{ duration: 8 + i * 2, repeat: Infinity, ease: "linear" }}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary/30" />
+        </motion.div>
+      ))}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-2">Automação</motion.div>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-lg md:text-xl font-bold text-foreground leading-tight">Escalar</motion.div>
+      </div>
+    </div>
+  );
+};
+
+// Cover 7: WhatsApp Estratégico — pulsing waves
+export const CoverWhatsApp = ({ className }: { className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setMouse({ x: (e.clientX - rect.left) / rect.width, y: (e.clientY - rect.top) / rect.height });
+  };
+
+  return (
+    <div ref={ref} onMouseMove={handleMouseMove} className={cn("relative overflow-hidden bg-background", className)}>
+      <div className="absolute inset-0" style={{ background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(152 69% 31% / 0.12), transparent 70%)` }} />
+      {/* Pulsing signal waves */}
+      {[0, 1, 2, 3].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00a884]/20"
+          animate={{
+            width: [`${30 + i * 20}px`, `${80 + i * 30}px`],
+            height: [`${30 + i * 20}px`, `${80 + i * 30}px`],
+            opacity: [0.5, 0],
+          }}
+          transition={{ duration: 2.5, delay: i * 0.5, repeat: Infinity, ease: "easeOut" }}
+        />
+      ))}
+      <motion.div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#00a884]" animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }} transition={{ duration: 2, repeat: Infinity }} />
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-2">Estratégia</motion.div>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-lg md:text-xl font-bold text-foreground leading-tight">WhatsApp</motion.div>
+      </div>
+    </div>
+  );
+};
+
+// Cover 8: Consultoria — connected nodes
+export const CoverConsultoria = ({ className }: { className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    setMouse({ x: (e.clientX - rect.left) / rect.width, y: (e.clientY - rect.top) / rect.height });
+  };
+
+  const nodes = [
+    { x: 25, y: 30 }, { x: 75, y: 25 }, { x: 50, y: 55 },
+    { x: 20, y: 70 }, { x: 80, y: 65 },
+  ];
+
+  return (
+    <div ref={ref} onMouseMove={handleMouseMove} className={cn("relative overflow-hidden bg-background", className)}>
+      <div className="absolute inset-0" style={{ background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(56 18% 42% / 0.12), transparent 70%)` }} />
+      {/* Connection lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-15">
+        {nodes.map((n, i) =>
+          nodes.slice(i + 1).map((m, j) => (
+            <motion.line key={`${i}-${j}`} x1={`${n.x}%`} y1={`${n.y}%`} x2={`${m.x}%`} y2={`${m.y}%`} stroke="hsl(56 18% 51%)" strokeWidth="0.5"
+              initial={{ pathLength: 0 }} animate={{ pathLength: [0, 1, 0] }} transition={{ duration: 4, delay: (i + j) * 0.3, repeat: Infinity }} />
+          ))
+        )}
+      </svg>
+      {/* Nodes */}
+      {nodes.map((n, i) => (
+        <motion.div key={i} className="absolute w-2 h-2 rounded-full bg-primary/40" style={{ left: `${n.x}%`, top: `${n.y}%` }}
+          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }} />
+      ))}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-2">Consultoria</motion.div>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-lg md:text-xl font-bold text-foreground leading-tight">Crescimento</motion.div>
+      </div>
+    </div>
+  );
+};
+
 // Map slug to cover component
 export const blogCovers: Record<string, React.FC<{ className?: string }>> = {
   "flow-commerce-ecommerce-whatsapp": CoverFlowCommerce,
@@ -419,4 +533,7 @@ export const blogCovers: Record<string, React.FC<{ className?: string }>> = {
   "ecommerce-nova-logica": CoverEcommerce,
   "tese-pablo-inovacao": CoverTesePablo,
   "ia-nova-fase-infraestrutura": CoverIA,
+  "automacao-inteligente-escalar-operacao": CoverAutomacao,
+  "whatsapp-canal-estrategico": CoverWhatsApp,
+  "consultoria-tecnologica-crescimento": CoverConsultoria,
 };
