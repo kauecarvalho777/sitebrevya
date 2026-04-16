@@ -1,10 +1,9 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { getPostBySlug, posts } from "@/data/posts";
-import { Calendar, Tag, User, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useRef, useState, useEffect, useCallback } from "react";
-import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
+import ReadMoreCarousel from "@/components/ReadMoreCarousel";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
