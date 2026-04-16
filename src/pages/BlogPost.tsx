@@ -1,6 +1,9 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { getPostBySlug, getLatestPosts } from "@/data/posts";
-import { ArrowLeft, Calendar, Tag, User } from "lucide-react";
+import { getPostBySlug, posts } from "@/data/posts";
+import { Calendar, Tag, User } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { InfiniteMovingCards } from "@/components/ui/aceternity/infinite-moving-cards";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -8,9 +11,9 @@ const BlogPost = () => {
 
   if (!post) return <Navigate to="/blog" replace />;
 
-  const related = getLatestPosts(3).filter((p) => p.slug !== post.slug).slice(0, 2);
+  const otherPosts = posts.filter((p) => p.slug !== post.slug);
 
-  // Simple markdown-like rendering: headings, blockquotes, lists, paragraphs
+  // Simple markdown-like rendering
   const renderContent = (content: string) => {
     return content
       .trim()
@@ -58,23 +61,22 @@ const BlogPost = () => {
       });
   };
 
+  // Build items for infinite carousel
+  const carouselItems = otherPosts.map((p) => ({
+    quote: p.excerpt,
+    name: p.title,
+    title: p.category,
+    slug: p.slug,
+    image: p.image,
+    date: p.date,
+  }));
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <div className="border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 py-6 flex items-center gap-4">
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Voltar ao blog
-          </Link>
-        </div>
-      </div>
+      <Navbar />
 
       {/* Hero Image */}
-      <div className="w-full max-h-[420px] overflow-hidden">
+      <div className="w-full max-h-[420px] overflow-hidden mt-16">
         <img
           src={post.image}
           alt={post.title}
@@ -108,24 +110,36 @@ const BlogPost = () => {
         </div>
       </article>
 
-      {/* Related Posts */}
-      {related.length > 0 && (
-        <section className="border-t border-border">
-          <div className="container mx-auto px-4 lg:px-8 py-16 max-w-3xl">
-            <h2 className="text-xl font-bold mb-8">Leia também</h2>
-            <div className="grid gap-6 sm:grid-cols-2">
-              {related.map((r) => (
+      {/* Infinite Carousel - Leia mais */}
+      {otherPosts.length > 0 && (
+        <section className="border-t border-border py-16">
+          <div className="container mx-auto px-4 lg:px-8">
+            <h2 className="text-xl font-bold mb-10">Leia também</h2>
+          </div>
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll-left gap-6 w-max">
+              {[...otherPosts, ...otherPosts, ...otherPosts].map((p, idx) => (
                 <Link
-                  key={r.slug}
-                  to={`/blog/${r.slug}`}
-                  className="group rounded-lg border border-border bg-card overflow-hidden hover:border-primary/40 transition-all"
+                  key={`${p.slug}-${idx}`}
+                  to={`/blog/${p.slug}`}
+                  className="group flex-shrink-0 w-[320px] rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300"
                 >
                   <div className="aspect-[16/9] overflow-hidden">
-                    <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="p-4">
-                    <p className="text-xs text-muted-foreground mb-1">{new Date(r.date).toLocaleDateString("pt-BR")}</p>
-                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors">{r.title}</h3>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
+                      <span>{p.category}</span>
+                      <span>{new Date(p.date).toLocaleDateString("pt-BR")}</span>
+                    </div>
+                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors line-clamp-2">
+                      {p.title}
+                    </h3>
                   </div>
                 </Link>
               ))}
@@ -133,6 +147,8 @@ const BlogPost = () => {
           </div>
         </section>
       )}
+
+      <Footer />
     </div>
   );
 };
