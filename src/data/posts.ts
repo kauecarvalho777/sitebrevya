@@ -7,9 +7,189 @@ export interface Post {
   date: string;
   author: string;
   category: string;
+  hasFlowDemo?: boolean;
 }
 
 export const posts: Post[] = [
+  {
+    slug: "flow-commerce-ecommerce-whatsapp",
+    title: "Flow Commerce: a Brevya e o que pode ser o primeiro e-commerce 100% dentro do WhatsApp no mundo",
+    excerpt: "Como uma necessidade real de operação levou ao desenvolvimento de uma nova lógica de venda, compra e gestão dentro do próprio WhatsApp.",
+    content: `
+Como uma necessidade real de operação levou ao desenvolvimento de uma nova lógica de venda, compra e gestão dentro do próprio WhatsApp.
+
+O e-commerce foi construído, durante anos, sobre uma lógica muito clara: o cliente descobre um produto, clica em um link, entra em um site, navega, adiciona ao carrinho, vai para o checkout e conclui a compra em um ambiente separado da conversa.
+
+Essa estrutura moldou o comércio digital como conhecemos hoje.
+
+Mas o comportamento do consumidor mudou.
+
+Hoje, a atenção do cliente está em outro lugar.
+Ela está na conversa.
+Está no canal direto.
+Está no WhatsApp.
+
+Foi exatamente a partir dessa mudança de comportamento que nasceu o Flow Commerce, nome dado por Pablo ao modelo desenvolvido pela Brevya e apresentado pela empresa como o que pode ser o primeiro e-commerce 100% dentro do WhatsApp no mundo, utilizando o WhatsApp Flows como base para a experiência.
+
+Mais do que uma funcionalidade, o Flow Commerce representa uma nova lógica de comércio digital: uma jornada completa de compra acontecendo dentro do mesmo ambiente onde o cliente já conversa, tira dúvidas, negocia e toma a decisão.
+
+## A origem do Flow Commerce
+
+O Flow Commerce não nasceu como ideia abstrata.
+Ele nasceu de um problema real.
+
+Durante a estruturação da operação de um cliente com 18 lojas, a Brevya percebeu um cenário muito claro: o e-commerce tradicional da empresa não performava como deveria, enquanto o WhatsApp já concentrava grande parte da atenção, do relacionamento e da conversão.
+
+Na prática, o cliente:
+
+- perguntava no WhatsApp
+- tirava dúvida no WhatsApp
+- negociava no WhatsApp
+- e, muitas vezes, concluía a compra pelo WhatsApp
+
+Foi nesse contexto que surgiu a pergunta que mudou a lógica do projeto:
+
+> Se a venda já acontece no WhatsApp, por que a compra ainda precisa sair dali?
+
+A partir dessa leitura, a Brevya deixou de olhar para o WhatsApp apenas como canal de atendimento e passou a tratá-lo como um possível ambiente completo de venda.
+
+## O que o mercado via como fluxo, a Brevya viu como aplicação
+
+Hoje, o uso mais comum do WhatsApp Flows no mercado está concentrado em experiências estruturadas, como:
+
+- formulários
+- captação de dados
+- confirmações
+- pequenos fluxos de atendimento
+- etapas operacionais mais simples
+
+A Brevya enxergou algo maior.
+
+Em vez de tratar o recurso apenas como apoio à conversa, a empresa passou a enxergá-lo como base para uma aplicação comercial completa.
+
+Na visão da empresa, o Flow poderia deixar de ser apenas uma etapa dentro da jornada e passar a sustentar a jornada inteira.
+
+## O que é o Flow Commerce na prática
+
+Com o Flow Commerce, a jornada de compra deixa de depender de um site externo para acontecer.
+
+Dentro da solução desenvolvida pela Brevya, o cliente pode:
+
+- acessar a loja dentro do WhatsApp
+- visualizar produtos recomendados
+- navegar por categorias
+- escolher produtos
+- entrar na página do item
+- adicionar ao carrinho
+- informar endereço
+- selecionar a forma de pagamento
+- pagar por Pix ou cartão
+- concluir o pedido
+
+Tudo isso sem sair da conversa.
+
+Sem redirecionamento.
+Sem abrir navegador.
+Sem baixar aplicativo.
+Sem quebrar a jornada.
+
+> A compra acontece exatamente onde a atenção já está.
+
+## Não é apenas uma venda no WhatsApp
+
+Um dos maiores erros ao olhar para o Flow Commerce é imaginar que ele se resume a uma experiência de compra dentro da conversa.
+
+Na verdade, o que a Brevya desenvolveu vai além da camada visível para o cliente.
+
+Por trás da jornada de compra, existe uma estrutura completa de gestão.
+
+Isso significa que, enquanto o consumidor compra dentro do WhatsApp, a empresa passa a ter controle sobre:
+
+- pedidos
+- leads
+- clientes
+- atendimento
+- equipe
+- operação comercial
+- emissão de nota fiscal
+- organização do fluxo interno
+- acompanhamento da performance
+
+Ou seja: o Flow Commerce não é apenas uma nova vitrine. Ele é uma nova forma de organizar venda e operação ao mesmo tempo.
+
+## O Flow Commerce como nova lógica de mercado
+
+O ponto mais importante talvez não seja a tecnologia em si, mas o que ela representa.
+
+O Flow Commerce parte de uma tese muito simples:
+
+> O problema do e-commerce tradicional não está apenas na experiência da loja, mas na distância entre o lugar onde o cliente decide comprar e o lugar onde a compra de fato acontece.
+
+Durante muito tempo, o digital aceitou essa separação como natural.
+Conversa de um lado.
+Checkout do outro.
+
+Só que o comportamento do consumidor passou a mostrar outra coisa.
+
+A decisão já está sendo tomada no canal direto.
+A confiança já está sendo construída na conversa.
+A venda já está nascendo no WhatsApp.
+
+## O papel da Brevya nessa construção
+
+Para a Brevya, o Flow Commerce é a materialização de uma tese maior: a tecnologia não deveria ser usada apenas para corrigir gargalos, mas para criar novas possibilidades de operação e crescimento.
+
+Em vez de perguntar apenas como a tecnologia pode melhorar o que já existe, a empresa parte de outra pergunta:
+
+> O que ainda pode ser criado a partir do que já está disponível?
+
+Foi com essa leitura que a Brevya transformou o WhatsApp em mais do que um canal de relacionamento.
+
+Transformou o WhatsApp em:
+
+- loja
+- jornada
+- conversão
+- e operação
+
+## O primeiro no mundo
+
+A Brevya apresenta o Flow Commerce como o que pode ser o primeiro e-commerce 100% dentro do WhatsApp no mundo, porque toda a jornada foi estruturada para acontecer no próprio ambiente da conversa, do início ao fim.
+
+Essa afirmação não se apoia apenas na ideia de vender pelo WhatsApp — algo que muitas empresas já fazem de forma assistida ou fragmentada — mas na construção de uma experiência realmente completa, integrada e operacionalizada dentro do aplicativo.
+
+## O que vem depois
+
+O Flow Commerce é, ao mesmo tempo, um produto, um case e uma tese.
+
+Como produto, ele entrega uma nova experiência de compra.
+Como case, ele mostra a capacidade da Brevya de reinterpretar tecnologias já existentes.
+Como tese, ele aponta para uma mudança maior: o comércio digital pode estar entrando em uma nova fase.
+
+Uma fase em que vender não depende mais de tirar o cliente do lugar onde ele já está.
+
+## Conclusão
+
+O Flow Commerce nasce de uma observação simples e poderosa:
+
+> Se o cliente já está no WhatsApp, talvez a venda inteira devesse acontecer ali.
+
+A partir dessa leitura, a Brevya desenvolveu uma estrutura que transforma conversa em jornada, jornada em compra e compra em operação organizada.
+
+Mais do que um e-commerce dentro do WhatsApp, o Flow Commerce representa uma nova forma de pensar o comércio digital.
+
+Uma forma mais próxima do comportamento real do consumidor.
+Mais integrada à operação das empresas.
+E muito menos dependente da lógica tradicional que dominou o e-commerce até aqui.
+
+> Talvez o e-commerce não tenha acabado. Mas a forma de entendê-lo certamente começou a mudar. E o Flow Commerce pode ser uma das provas mais claras disso.
+    `,
+    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80",
+    date: "2026-04-16",
+    author: "Brevya",
+    category: "Flow Commerce",
+    hasFlowDemo: true,
+  },
   {
     slug: "tese-da-brevya-tecnologia-possibilidades",
     title: "Tese da Brevya: tecnologia que cria possibilidades",
