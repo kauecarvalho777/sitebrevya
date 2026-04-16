@@ -14,6 +14,7 @@ const BlogPost = () => {
   if (!post) return <Navigate to="/blog" replace />;
 
   const otherPosts = posts.filter((p) => p.slug !== post.slug);
+  const Cover = blogCovers[post.slug];
 
   // Simple markdown-like rendering
   const renderContent = (content: string) => {
