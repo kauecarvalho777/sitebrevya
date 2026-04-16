@@ -92,11 +92,11 @@ const Footer = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-10 md:py-12">
+      <footer className="border-t border-border py-8 md:py-10">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Mobile: stacked centered layout / Desktop: 3-col grid */}
-          <div className="flex flex-col items-center gap-8 md:grid md:grid-cols-3 md:items-start md:gap-8">
-            {/* Coluna 1 — Logo */}
+          <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-start md:gap-6">
+            {/* Coluna 1 — Logo + Selo */}
             <div className="flex flex-col items-center md:items-start gap-3">
               <img
                 src={logo}
@@ -106,6 +106,9 @@ const Footer = () => {
               <p className="text-xs text-muted-foreground max-w-[220px] text-center md:text-left">
                 Tecnologia para empresas que querem escalar com visão e inteligência.
               </p>
+              <div className="mt-1">
+                <ReclameAquiSeal />
+              </div>
             </div>
 
             {/* Mobile: Links e Contato lado a lado */}
@@ -139,11 +142,6 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-            </div>
-
-            {/* Selo Reclame Aqui — centralizado no mobile */}
-            <div className="flex justify-center md:col-span-3 md:justify-start">
-              <ReclameAquiSeal />
             </div>
           </div>
 
