@@ -20,7 +20,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 };
 
 const LatestPosts = () => {
-  const latestPosts = getLatestPosts(3);
+  const latestPosts = getLatestPosts(4);
 
   return (
     <section className="py-20 lg:py-28">
@@ -43,7 +43,7 @@ const LatestPosts = () => {
           </div>
         </FadeIn>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {latestPosts.map((post, i) => (
             <FadeIn key={post.slug} delay={i * 0.1}>
               <Link
