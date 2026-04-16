@@ -255,7 +255,7 @@ export const CoverTesePablo = ({ className }: { className?: string }) => {
   );
 };
 
-// Cover 4: IA Infrastructure — stacking layers
+// Cover 4: IA Infrastructure — expanding rings + scanning line
 export const CoverIA = ({ className }: { className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
@@ -269,8 +269,6 @@ export const CoverIA = ({ className }: { className?: string }) => {
     });
   };
 
-  const layers = ["Modelo", "Infra", "Distribuição", "Contratos", "Receita"];
-
   return (
     <div
       ref={ref}
@@ -281,27 +279,33 @@ export const CoverIA = ({ className }: { className?: string }) => {
       <div
         className="absolute inset-0"
         style={{
-          background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(56 18% 42% / 0.1), transparent 70%)`,
+          background: `radial-gradient(300px circle at ${mouse.x * 100}% ${mouse.y * 100}%, hsl(56 18% 42% / 0.12), transparent 70%)`,
         }}
       />
 
-      {/* Stacking animated layers */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-8">
-        {layers.map((label, i) => (
-          <motion.div
-            key={label}
-            className="w-full max-w-[160px] h-5 rounded-sm border border-primary/20 bg-primary/5 flex items-center justify-center"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            whileHover={{ scale: 1.05, borderColor: "hsl(56 18% 51% / 0.5)" }}
-          >
-            <span className="text-[9px] uppercase tracking-wider text-primary/60 font-medium">
-              {label}
-            </span>
-          </motion.div>
-        ))}
-      </div>
+      {/* Expanding rings */}
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full border border-primary/15"
+          style={{
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+          animate={{
+            width: [`${40 + i * 30}px`, `${100 + i * 50}px`],
+            height: [`${40 + i * 30}px`, `${100 + i * 50}px`],
+            opacity: [0.4, 0],
+          }}
+          transition={{
+            duration: 3,
+            delay: i * 0.8,
+            repeat: Infinity,
+            ease: "easeOut",
+          }}
+        />
+      ))}
 
       {/* Scanning line */}
       <motion.div
@@ -310,13 +314,13 @@ export const CoverIA = ({ className }: { className?: string }) => {
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-start justify-end h-full p-6">
+      {/* Content — centered like all other covers */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-1"
+          className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-2"
         >
           Análise
         </motion.div>
@@ -324,7 +328,7 @@ export const CoverIA = ({ className }: { className?: string }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-sm font-bold text-foreground leading-tight"
+          className="text-lg md:text-xl font-bold text-foreground leading-tight"
         >
           Nova fase da IA
         </motion.div>
