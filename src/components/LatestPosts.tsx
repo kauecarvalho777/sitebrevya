@@ -4,6 +4,13 @@ import { Calendar, Tag, ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { blogCovers } from "@/components/BlogCovers";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   const ref = useRef(null);
@@ -21,7 +28,7 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 };
 
 const LatestPosts = () => {
-  const latestPosts = getLatestPosts(4);
+  const latestPosts = getLatestPosts(8);
 
   return (
     <section className="py-20 lg:py-28">
@@ -44,50 +51,62 @@ const LatestPosts = () => {
           </div>
         </FadeIn>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {latestPosts.map((post, i) => {
-            const Cover = blogCovers[post.slug];
-            return (
-              <FadeIn key={post.slug} delay={i * 0.1}>
-                <Link
-                  to={`/blog/${post.slug}`}
-                  className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300 block h-full"
-                >
-                  <div className="aspect-[16/9] overflow-hidden">
-                    {Cover ? (
-                      <Cover className="w-full h-full" />
-                    ) : (
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                      <span className="inline-flex items-center gap-1">
-                        <Tag size={12} />
-                        {post.category}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar size={12} />
-                        {new Date(post.date).toLocaleDateString("pt-BR")}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                </Link>
-              </FadeIn>
-            );
-          })}
-        </div>
+        <FadeIn delay={0.1}>
+          <Carousel
+            opts={{ align: "start", loop: false }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {latestPosts.map((post) => {
+                const Cover = blogCovers[post.slug];
+                return (
+                  <CarouselItem
+                    key={post.slug}
+                    className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="group rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_hsl(56_18%_42%/0.08)] transition-all duration-300 block h-full"
+                    >
+                      <div className="aspect-[16/9] overflow-hidden">
+                        {Cover ? (
+                          <Cover className="w-full h-full" />
+                        ) : (
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                        )}
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                          <span className="inline-flex items-center gap-1">
+                            <Tag size={12} />
+                            {post.category}
+                          </span>
+                          <span className="inline-flex items-center gap-1">
+                            <Calendar size={12} />
+                            {new Date(post.date).toLocaleDateString("pt-BR")}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                    </Link>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-4 lg:-left-6" />
+            <CarouselNext className="hidden md:flex -right-4 lg:-right-6" />
+          </Carousel>
+        </FadeIn>
 
         <div className="mt-8 text-center sm:hidden">
           <Link
